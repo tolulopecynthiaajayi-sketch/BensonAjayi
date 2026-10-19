@@ -495,6 +495,7 @@ class TributeDB {
 
     // Sync to Cloud Firestore
     if (this.firestoreDb && typeof firebase !== 'undefined') {
+      try {
         const payload = {
           author: newTribute.author,
           relation: newTribute.relation || '',
