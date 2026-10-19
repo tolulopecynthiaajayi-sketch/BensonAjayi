@@ -426,14 +426,17 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.style.overflow = '';
   }
 
-  // Bind close buttons & backdrop click
-  document.querySelectorAll('.modal-close-btn, .modal-backdrop').forEach(el => {
-    el.addEventListener('click', (e) => {
-      if (e.target.classList.contains('modal-backdrop') || e.target.closest('.modal-close-btn')) {
-        const activeModal = document.querySelector('.modal-backdrop.active');
-        if (activeModal) closeModal(activeModal);
-      }
-    });
+  // Bind close buttons, cancel buttons & backdrop click
+  document.addEventListener('click', (e) => {
+    const isBackdrop = e.target.classList.contains('modal-backdrop');
+    const closeBtn = e.target.closest('.modal-close-btn');
+    const cancelBtn = e.target.closest('.modal-cancel-btn');
+
+    if (isBackdrop || closeBtn || cancelBtn) {
+      if (cancelBtn || closeBtn) e.preventDefault();
+      const activeModal = e.target.closest('.modal-backdrop') || document.querySelector('.modal-backdrop.active');
+      if (activeModal) closeModal(activeModal);
+    }
   });
 
   // Open button event listeners
