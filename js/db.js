@@ -123,7 +123,7 @@ const INITIAL_TRIBUTES = [
     relation: 'Son',
     avatarInitials: 'TA',
     symbol: '✦',
-    date: 'October 24, 2026',
+    date: 'October 22, 2026',
     message: 'Happy 60th Birthday, Daddy! Words cannot fully capture the depth of my gratitude to God for giving us a father like you. Your wisdom, patience, integrity, and unconditional love have been our greatest foundation. You lead by example in faith, humility, and excellence. May your next 60 years be filled with even greater peace, health, joy, and prosperity. We celebrate you today and forever!',
     likes: 18,
     photoUrl: 'assets/photos/benson-ajayi-hero.jpg'
@@ -134,7 +134,7 @@ const INITIAL_TRIBUTES = [
     relation: 'Wife',
     avatarInitials: 'OA',
     symbol: '♥',
-    date: 'October 24, 2026',
+    date: 'October 22, 2026',
     message: 'To my dearest husband Benson, my partner, prayer warrior, and best friend. Celebrating 60 years of your extraordinary life is such a profound blessing. Thank you for being the pillar of our home, a loving father to our children, and a man after God\'s own heart. May the Almighty continue to renew your strength like the eagle\'s. Happy 60th Diamond Jubilee, my love!',
     likes: 24,
     photoUrl: 'assets/photos/benson-ajayi-regal.jpg'
@@ -145,7 +145,7 @@ const INITIAL_TRIBUTES = [
     relation: 'Children',
     avatarInitials: 'AJ',
     symbol: '60',
-    date: 'October 24, 2026',
+    date: 'October 22, 2026',
     message: 'Happy 60th Birthday Daddy! Thank you for the unconditional sacrifice, the warmest guidance, the laughter, and always being our safe haven. You are the finest father anyone could ever pray for! We love and cherish you beyond measure!',
     likes: 20,
     photoUrl: 'assets/photos/benson-ajayi-tradition.jpg'
@@ -156,7 +156,7 @@ const INITIAL_TRIBUTES = [
     relation: 'Church Family',
     avatarInitials: 'PA',
     symbol: '✦',
-    date: 'October 24, 2026',
+    date: 'October 22, 2026',
     message: 'Hearty congratulations to our beloved brother, Elder Benson Ajayi, on the auspicious occasion of your 60th birthday! Your dedication to the house of God and selfless service to humanity continue to inspire everyone around you. As your days are, so shall your strength and grace be in Jesus\' name. Cheers to a diamond jubilee well deserved!',
     likes: 12,
     photoUrl: null
@@ -167,7 +167,7 @@ const INITIAL_TRIBUTES = [
     relation: 'Friend',
     avatarInitials: 'EF',
     symbol: 'BA',
-    date: 'October 24, 2026',
+    date: 'October 22, 2026',
     message: 'Benson, my brother and trusted friend of decades! Seeing you hit this milestone of 60 years in sound health, vibrancy, and honor gives me immense joy. You are a dependable friend, an upright gentleman, and a rare gem. May this milestone herald new seasons of divine favor and peace. Happy 60th birthday!',
     likes: 9,
     photoUrl: null
@@ -185,7 +185,7 @@ const INITIAL_BLESSINGS = [
     verse: 'The righteous shall flourish like the palm tree; he shall grow like a cedar in Lebanon. Those that be planted in the house of the LORD shall flourish in the courts of our God. They shall still bring forth fruit in old age; they shall be fat and flourishing.',
     prayer: 'Beloved Elder Benson, may the Lord continuously renew your youth and grant you endless seasons of fruitful vigor!',
     amenCount: 24,
-    date: 'October 24, 2026'
+    date: 'October 22, 2026'
   },
   {
     id: 'bless-2',
@@ -194,7 +194,7 @@ const INITIAL_BLESSINGS = [
     relation: 'Wife',
     toast: 'Raising a diamond toast to my partner of destiny! Cheers to 60 magnificent years of divine health, peace of mind, sound wisdom, and unwavering joy. Here is to our best years yet!',
     amenCount: 32,
-    date: 'October 24, 2026'
+    date: 'October 22, 2026'
   },
   {
     id: 'bless-3',
@@ -205,7 +205,7 @@ const INITIAL_BLESSINGS = [
     verse: 'Beloved, I wish above all things that thou mayest prosper and be in health, even as thy soul prospereth.',
     prayer: 'To our wonderful father! May the Lord crown your 60th year with overflowing health, divine peace, and perpetual laughter!',
     amenCount: 29,
-    date: 'October 24, 2026'
+    date: 'October 22, 2026'
   },
   {
     id: 'bless-4',
@@ -216,7 +216,7 @@ const INITIAL_BLESSINGS = [
     verse: 'With long life will I satisfy him, and show him my salvation.',
     prayer: 'Dedicated in adoration to God for sustaining my father with divine vitality, sound mind, and unwavering favor.',
     amenCount: 27,
-    date: 'October 24, 2026'
+    date: 'October 22, 2026'
   },
   {
     id: 'bless-5',
@@ -225,7 +225,7 @@ const INITIAL_BLESSINGS = [
     relation: 'Extended Family',
     toast: 'A resounding jubilee toast to our beloved patriarch! Sixty glorious years of uncompromising integrity, warmth, and steady leadership that guides our entire lineage. Cheers to long life!',
     amenCount: 21,
-    date: 'October 24, 2026'
+    date: 'October 22, 2026'
   },
   {
     id: 'bless-6',
@@ -234,7 +234,7 @@ const INITIAL_BLESSINGS = [
     relation: 'Friend',
     toast: 'A resounding toast to Benson! A loyal friend of over 40 years. At 60 you remain as energetic, sharp, and upright as ever. Long life and prosperity in abundance!',
     amenCount: 15,
-    date: 'October 24, 2026'
+    date: 'October 22, 2026'
   },
   {
     id: 'bless-7',
@@ -245,7 +245,7 @@ const INITIAL_BLESSINGS = [
     verse: 'Even to your old age and gray hairs I am he, I am he who will sustain you. I have made you and I will carry you; I will sustain you and I will rescue you.',
     prayer: 'Elder Benson, the Lord who called you into His vineyard will preserve your going out and your coming in for decades to come.',
     amenCount: 18,
-    date: 'October 24, 2026'
+    date: 'October 22, 2026'
   }
 ];
 

@@ -1,6 +1,6 @@
 # Benson Ajayi — The 60th Diamond Jubilee Celebration
 
-A commemorative digital retrospective and celebration monograph honoring **Elder Benson Ajayi** on the auspicious occasion of his 60th birthday (October 24, 2026).
+A commemorative digital retrospective and celebration monograph honoring **Elder Benson Ajayi** on the auspicious occasion of his 60th birthday (October 22, 2026).
 
 ---
 
