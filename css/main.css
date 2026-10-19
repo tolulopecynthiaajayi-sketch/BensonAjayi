@@ -2242,8 +2242,13 @@ body {
   }
 
   .masthead-inner {
-    padding: 10px 0;
-    gap: 10px;
+    padding: 8px 0;
+    gap: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    box-sizing: border-box;
   }
 
   .masthead-chapters {
@@ -2251,28 +2256,49 @@ body {
   }
 
   .masthead-brand {
-    gap: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
     min-width: 0;
+    flex: 1 1 auto;
+    overflow: hidden;
   }
 
   .masthead-seal {
-    width: 34px;
-    height: 34px;
-    font-size: 0.82rem;
+    width: 32px;
+    height: 32px;
+    font-size: 0.80rem;
+    flex-shrink: 0;
+  }
+
+  .masthead-title-wrap {
+    min-width: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
   }
 
   .masthead-title {
-    font-size: 0.98rem;
-    letter-spacing: 1.2px;
+    font-size: 0.90rem;
+    letter-spacing: 0.8px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .masthead-edition {
-    font-size: 0.62rem;
-    letter-spacing: 1.1px;
+    font-size: 0.58rem;
+    letter-spacing: 0.6px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .masthead-actions {
-    gap: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-shrink: 0;
   }
 
   .btn-masthead-cta#nav-tribute-btn {
@@ -2280,9 +2306,13 @@ body {
   }
 
   .audio-player-pill {
-    padding: 5px 12px;
-    font-size: 0.74rem;
+    padding: 5px 10px;
+    font-size: 0.72rem;
     gap: 6px;
+    white-space: nowrap !important;
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
   }
 
   /* Entrance Portal Mobile */
@@ -2514,7 +2544,7 @@ body {
 
   /* Publishing Colophon Footer */
   .monograph-colophon-footer {
-    padding: 38px 0 calc(32px + env(safe-area-inset-bottom, 16px));
+    padding: 38px 0 calc(78px + env(safe-area-inset-bottom, 16px));
     margin-top: 36px;
     width: 100%;
     max-width: 100%;
@@ -2589,43 +2619,56 @@ body {
   }
 }
 
-/* Extra Compact Phones (<= 400px: iPhone SE, Galaxy A, etc.) */
+/* Extra Compact Phones (<= 400px: Samsung Galaxy S21 [360px], iPhone SE, Galaxy A, etc.) */
 @media (max-width: 400px) {
   .container {
-    padding-left: 14px;
-    padding-right: 14px;
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .masthead-seal {
+    width: 30px;
+    height: 30px;
+    font-size: 0.76rem;
   }
 
   .masthead-title {
-    font-size: 0.90rem;
-    letter-spacing: 0.8px;
+    font-size: 0.86rem;
+    letter-spacing: 0.5px;
   }
 
   .masthead-edition {
-    font-size: 0.58rem;
-    letter-spacing: 0.8px;
+    font-size: 0.52rem;
+    letter-spacing: 0.4px;
+  }
+
+  .audio-player-pill {
+    padding: 5px 8px;
+    font-size: 0.68rem;
+    gap: 5px;
   }
 
   .chapter-title {
-    font-size: 26px;
+    font-size: 25px;
   }
 
   .foreword-magazine-spread {
-    padding: 20px 14px;
+    padding: 18px 12px;
   }
 
   .foreword-photo-feature img {
-    height: 270px;
+    height: 260px;
   }
 
   .bio-card {
-    padding: 20px 14px;
+    padding: 18px 12px;
   }
 }
 
 /* ===================================================================
    11. LUXURY MOBILE FLOATING BOTTOM NAVIGATION DOCK
    Native App-Style Floating Bar with Safe Area Inset Support
+   Fully optimized for 360px (Samsung S21) to 768px viewports
    =================================================================== */
 
 .mobile-bottom-dock {
@@ -2636,45 +2679,66 @@ body {
   .mobile-bottom-dock {
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
     position: fixed;
     bottom: 0;
     left: 0;
     right: 0;
+    width: 100%;
+    max-width: 100vw;
+    box-sizing: border-box;
     z-index: 400;
-    background: rgba(18, 8, 11, 0.95);
+    background: rgba(18, 8, 11, 0.96);
     backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(24px);
     border-top: 1px solid rgba(229, 192, 123, 0.22);
     box-shadow: 0 -8px 30px rgba(0, 0, 0, 0.7);
-    padding: 6px 8px calc(6px + env(safe-area-inset-bottom, 10px));
+    padding: 6px 2px calc(6px + env(safe-area-inset-bottom, 8px));
   }
 
   .mobile-dock-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 3px;
-    flex: 1;
-    min-height: 48px;
-    text-decoration: none;
-    color: var(--ink-muted);
-    font-family: var(--font-sans);
-    font-size: 0.65rem;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 2px !important;
+    flex: 1 1 0% !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    padding: 4px 1px !important;
+    min-height: 44px !important;
+    text-decoration: none !important;
+    color: var(--ink-muted) !important;
+    font-family: var(--font-sans) !important;
+    font-size: 0.60rem !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.2px !important;
+    text-transform: uppercase !important;
+    border: none !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    border-radius: 8px !important;
     transition: color 0.2s ease, transform 0.2s ease;
     -webkit-tap-highlight-color: transparent;
+  }
+
+  .mobile-dock-item .dock-label {
+    white-space: nowrap !important;
+    font-size: 0.60rem !important;
+    line-height: 1.1 !important;
+    letter-spacing: 0.2px !important;
+    text-align: center;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .mobile-dock-item .dock-icon {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 24px;
-    height: 24px;
+    width: 22px;
+    height: 22px;
     transition: transform 0.2s ease;
   }
 
@@ -2685,7 +2749,7 @@ body {
   .mobile-dock-item.active {
     color: var(--gold-primary) !important;
     background: transparent !important;
-    border-color: transparent !important;
+    border: none !important;
     box-shadow: none !important;
   }
 
@@ -2697,15 +2761,17 @@ body {
 
   .mobile-dock-item.active .dock-label {
     color: var(--gold-primary) !important;
-    font-weight: 700;
+    font-weight: 700 !important;
   }
 
   /* Center Elevated Inscribe Floating Button (+) */
   .mobile-dock-fab {
-    width: 50px;
-    height: 50px;
+    width: 48px;
+    height: 48px;
     border-radius: 50%;
-    margin-top: -20px;
+    margin-top: -18px;
+    margin-left: 2px;
+    margin-right: 2px;
     background: linear-gradient(135deg, #F7EAD0 0%, #E5C07B 50%, #B89758 100%);
     color: #140A04;
     border: 2px solid rgba(255, 255, 255, 0.4);
@@ -2720,7 +2786,7 @@ body {
   }
 
   .mobile-dock-fab .fab-plus {
-    font-size: 1.8rem;
+    font-size: 1.7rem;
     font-weight: 300;
     line-height: 1;
     margin-top: -2px;
@@ -2729,5 +2795,39 @@ body {
   .mobile-dock-fab:active {
     transform: scale(0.92);
     box-shadow: 0 2px 10px rgba(229, 192, 123, 0.6);
+  }
+}
+
+@media (max-width: 400px) {
+  .mobile-dock-item {
+    font-size: 0.56rem !important;
+    padding: 3px 0 !important;
+  }
+
+  .mobile-dock-item .dock-label {
+    font-size: 0.56rem !important;
+    letter-spacing: 0.1px !important;
+  }
+
+  .mobile-dock-item .dock-icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .mobile-dock-item .dock-icon svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .mobile-dock-fab {
+    width: 44px;
+    height: 44px;
+    margin-top: -16px;
+    margin-left: 1px;
+    margin-right: 1px;
+  }
+
+  .mobile-dock-fab .fab-plus {
+    font-size: 1.55rem;
   }
 }

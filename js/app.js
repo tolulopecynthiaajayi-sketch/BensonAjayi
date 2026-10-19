@@ -29,6 +29,28 @@ document.addEventListener('DOMContentLoaded', () => {
   const audioToggleBtn = document.getElementById('audio-toggle-btn');
   const audioTextEl = document.getElementById('audio-status-text');
 
+  function updateAudioButtonLabel(isPlaying) {
+    if (!audioTextEl || !audioToggleBtn) return;
+    const isMobile = window.innerWidth <= 480;
+    if (isPlaying) {
+      audioToggleBtn.classList.add('audio-playing');
+      audioTextEl.textContent = isMobile ? 'Sunny Ade' : 'Playing: Sunny Ade';
+    } else {
+      audioToggleBtn.classList.remove('audio-playing');
+      audioTextEl.textContent = isMobile ? 'Music' : 'Sunny Ade Track';
+    }
+  }
+
+  // Initial compact label on narrow mobile viewports
+  if (window.innerWidth <= 480 && audioTextEl) {
+    audioTextEl.textContent = 'Music';
+  }
+  window.addEventListener('resize', () => {
+    if (window.audioPlayer) {
+      updateAudioButtonLabel(window.audioPlayer.isPlaying);
+    }
+  }, { passive: true });
+
   // DOM Elements - Containers
   const tributesContainer = document.getElementById('tributes-container');
   const blessingsContainer = document.getElementById('blessings-container') || document.getElementById('candles-container');
@@ -66,8 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Play antique wooden door creak, transitioning to King Sunny Ade celebration song
     if (audioPlayer && !audioPlayer.isPlaying) {
       audioPlayer.enterWithDoorCreak();
-      if (audioToggleBtn) audioToggleBtn.classList.add('audio-playing');
-      if (audioTextEl) audioTextEl.textContent = 'Playing: Sunny Ade';
+      updateAudioButtonLabel(true);
     }
 
     // Launch golden celebratory confetti burst as doors swing wide open and music kicks in
@@ -727,13 +748,9 @@ document.addEventListener('DOMContentLoaded', () => {
   if (audioToggleBtn) {
     audioToggleBtn.addEventListener('click', () => {
       const isNowPlaying = audioPlayer.toggle();
+      updateAudioButtonLabel(isNowPlaying);
       if (isNowPlaying) {
-        audioToggleBtn.classList.add('audio-playing');
-        if (audioTextEl) audioTextEl.textContent = 'Playing: Sunny Ade';
         showToast('Playing King Sunny Ade Birthday Celebration', '✦');
-      } else {
-        audioToggleBtn.classList.remove('audio-playing');
-        if (audioTextEl) audioTextEl.textContent = 'Sunny Ade Track';
       }
     });
   }
