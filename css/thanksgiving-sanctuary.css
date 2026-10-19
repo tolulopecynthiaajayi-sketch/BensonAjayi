@@ -1,0 +1,321 @@
+/* ===================================================================
+   SANCTUARY OF PRAISE & THANKSGIVING STYLES
+   Dedicated to Almighty God for Daddy Benson's 60 Years of Life & Favor
+   Scripture Scrolls, Jubilee Toasts & "60" Celebration Seals
+   =================================================================== */
+
+.thanksgiving-sanctuary-section {
+  position: relative;
+  background: 
+    radial-gradient(circle at 15% 20%, rgba(229, 192, 123, 0.12) 0%, transparent 45%),
+    radial-gradient(circle at 85% 80%, rgba(107, 24, 43, 0.18) 0%, transparent 45%),
+    linear-gradient(180deg, rgba(45, 14, 22, 0.48) 0%, rgba(28, 12, 16, 0.54) 50%, rgba(18, 8, 11, 0.60) 100%);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: var(--radius-lg);
+  border: 1.5px solid rgba(229, 192, 123, 0.22);
+  padding: 56px 36px;
+  margin-bottom: 60px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(10, 3, 5, 0.65), 0 0 40px rgba(107, 24, 43, 0.2);
+}
+
+/* Subtle Faded Photo Watermark in Background */
+.thanksgiving-sanctuary-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-image: url('../assets/photos/benson-ajayi-joy.jpg');
+  background-size: cover;
+  background-position: center 25%;
+  opacity: 0.06;
+  mix-blend-mode: screen;
+  filter: sepia(30%) brightness(1.2);
+  pointer-events: none;
+  z-index: 0;
+  mask-image: radial-gradient(ellipse at 70% 50%, black 20%, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse at 70% 50%, black 20%, transparent 75%);
+}
+
+.sanctuary-inner-wrap {
+  position: relative;
+  z-index: 1;
+}
+
+/* Sanctuary Header */
+.sanctuary-header {
+  text-align: center;
+  max-width: 820px;
+  margin: 0 auto 36px;
+}
+
+.sanctuary-pretitle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-monument);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--gold-primary);
+  margin-bottom: 12px;
+}
+
+.sanctuary-title {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 4vw, 2.85rem);
+  font-weight: 600;
+  color: var(--ink-primary);
+  line-height: 1.2;
+  margin-bottom: 16px;
+}
+
+.sanctuary-desc {
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: var(--ink-secondary);
+  font-weight: 400;
+}
+
+/* Filter Controls Bar */
+.sanctuary-filter-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 32px;
+}
+
+.sanctuary-filter-btn {
+  padding: 8px 18px;
+  border-radius: var(--radius-full);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--hairline-medium);
+  color: var(--ink-secondary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.sanctuary-filter-btn:hover {
+  border-color: var(--gold-primary);
+  color: var(--gold-light);
+  background: rgba(229, 192, 123, 0.12);
+  transform: translateY(-1px);
+}
+
+.sanctuary-filter-btn.active {
+  background: linear-gradient(135deg, #F7EAD0, #E5C07B);
+  color: #12080B !important;
+  border-color: var(--gold-primary);
+  box-shadow: 0 4px 14px rgba(229, 192, 123, 0.35);
+}
+
+/* Grid of Thanksgiving Offerings */
+.sanctuary-offerings-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 24px;
+  margin-bottom: 36px;
+}
+
+/* Base Offering Card - Soft Translucent Faded Glass */
+.offering-card {
+  position: relative;
+  background: linear-gradient(145deg, rgba(45, 14, 22, 0.42) 0%, rgba(31, 16, 10, 0.48) 100%);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(229, 192, 123, 0.16);
+  padding: 24px 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 8px 25px rgba(10, 3, 5, 0.45), 0 0 15px rgba(77, 18, 32, 0.15);
+  transition: all var(--transition-smooth);
+  overflow: hidden;
+}
+
+.offering-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--gold-foil);
+  opacity: 0.8;
+}
+
+.offering-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.6), 0 0 25px rgba(229, 192, 123, 0.2);
+  border-color: var(--gold-primary);
+}
+
+/* Top Card Badge & Type */
+.offering-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.offering-type-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-monument);
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+}
+
+.offering-type-tag.scripture-tag {
+  background: rgba(229, 192, 123, 0.14);
+  color: var(--gold-light);
+  border: 1px solid rgba(229, 192, 123, 0.35);
+}
+
+.offering-type-tag.toast-tag {
+  background: rgba(16, 185, 129, 0.15);
+  color: #34D399;
+  border: 1px solid rgba(16, 185, 129, 0.35);
+}
+
+.offering-date {
+  font-size: 0.78rem;
+  color: var(--ink-muted);
+}
+
+/* Scripture Scroll Styling */
+.scripture-ref-badge {
+  display: inline-block;
+  font-family: var(--font-monument);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--gold-primary);
+  margin-bottom: 8px;
+  letter-spacing: 0.5px;
+}
+
+.scripture-verse-text {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  line-height: 1.55;
+  color: var(--ink-primary);
+  font-style: italic;
+  margin-bottom: 12px;
+  padding-left: 12px;
+  border-left: 2px solid var(--gold-primary);
+}
+
+.scripture-prayer-note {
+  font-size: 0.9rem;
+  color: var(--ink-secondary);
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+/* Toast Styling */
+.toast-content-wrap {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+
+.toast-glass-icon {
+  font-size: 2.2rem;
+  line-height: 1;
+  flex-shrink: 0;
+  filter: drop-shadow(0 2px 8px rgba(229, 192, 123, 0.4));
+}
+
+.toast-message-text {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  font-style: italic;
+  color: var(--ink-primary);
+  line-height: 1.55;
+}
+
+/* Card Bottom & Amen / Cheer Interactive Button */
+.offering-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 14px;
+  border-top: 1px solid var(--hairline-light);
+  margin-top: 12px;
+}
+
+.offering-author {
+  font-weight: 700;
+  font-size: 0.88rem;
+  color: var(--ink-primary);
+}
+
+.offering-relation {
+  font-size: 0.76rem;
+  color: var(--gold-primary);
+  display: block;
+}
+
+.btn-amen-cheer {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--hairline-medium);
+  border-radius: var(--radius-full);
+  padding: 5px 12px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--ink-secondary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.btn-amen-cheer:hover {
+  background: rgba(229, 192, 123, 0.15);
+  border-color: var(--gold-primary);
+  color: var(--gold-light);
+  transform: scale(1.05);
+}
+
+.btn-amen-cheer.active {
+  background: rgba(229, 192, 123, 0.22);
+  border-color: var(--gold-primary);
+  color: var(--gold-light);
+}
+
+/* Action Trigger at Bottom */
+.sanctuary-actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 24px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .thanksgiving-sanctuary-section {
+    padding: 36px 20px;
+  }
+  .sanctuary-offerings-grid {
+    grid-template-columns: 1fr;
+  }
+}

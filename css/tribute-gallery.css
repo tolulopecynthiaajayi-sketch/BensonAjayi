@@ -1,0 +1,622 @@
+/* ===================================================================
+   TRIBUTES, GUESTBOOK, GALLERY & TIMELINE STYLES
+   High-Fashion Editorial Luxury Stationery & Fine-Art Gallery
+   =================================================================== */
+
+/* ===================================================================
+   1. TRIBUTES / GUESTBOOK SECTION & CONTROLS
+   =================================================================== */
+
+.tribute-controls-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 36px;
+  padding: 14px 22px;
+  background: linear-gradient(135deg, rgba(45, 14, 22, 0.45) 0%, rgba(31, 16, 10, 0.52) 100%);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(229, 192, 123, 0.18);
+  border-radius: var(--radius-full);
+  box-shadow: 0 8px 30px rgba(10, 3, 5, 0.5);
+}
+
+.tribute-filters {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  padding: 8px 18px;
+  border-radius: var(--radius-full);
+  font-size: 0.84rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--hairline-medium);
+  color: var(--ink-secondary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.filter-btn:hover {
+  border-color: var(--gold-primary);
+  color: var(--gold-light);
+  background: rgba(229, 192, 123, 0.12);
+}
+
+.filter-btn.active {
+  background: linear-gradient(135deg, #F7EAD0, #E5C07B);
+  color: #12080B !important;
+  border-color: var(--gold-primary);
+  box-shadow: 0 4px 14px rgba(229, 192, 123, 0.35);
+}
+
+.tribute-search-wrap {
+  position: relative;
+  min-width: 260px;
+}
+
+.tribute-search-input {
+  width: 100%;
+  padding: 10px 18px 10px 38px;
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--hairline-medium);
+  color: var(--ink-primary);
+  font-size: 0.9rem;
+  outline: none;
+  transition: all var(--transition-fast);
+}
+
+.tribute-search-input:focus {
+  border-color: var(--gold-primary);
+  box-shadow: 0 0 0 3px rgba(229, 192, 123, 0.15);
+}
+
+.tribute-search-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--ink-muted);
+  font-size: 0.9rem;
+}
+
+/* ===================================================================
+   2. TRIBUTE CARDS (LUXURY STATIONERY EFFECT)
+   =================================================================== */
+
+.tributes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  gap: 28px;
+  margin-bottom: 40px;
+}
+
+.tribute-card {
+  position: relative;
+  background: linear-gradient(145deg, rgba(45, 14, 22, 0.42) 0%, rgba(31, 16, 10, 0.48) 100%);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(229, 192, 123, 0.16);
+  border-radius: var(--radius-lg);
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 12px 35px -6px rgba(10, 3, 5, 0.55), 0 0 20px rgba(77, 18, 32, 0.15);
+  transition: all var(--transition-smooth);
+  overflow: hidden;
+}
+
+/* Editorial Watermark Quote Icon */
+.tribute-card::before {
+  content: '“';
+  position: absolute;
+  top: 8px;
+  right: 20px;
+  font-family: var(--font-serif);
+  font-size: 7.5rem;
+  line-height: 1;
+  color: rgba(229, 192, 123, 0.08);
+  pointer-events: none;
+  user-select: none;
+}
+
+.tribute-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--gold-primary);
+  box-shadow: var(--shadow-card-hover), 0 0 25px rgba(229, 192, 123, 0.15);
+}
+
+.tribute-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 18px;
+  position: relative;
+  z-index: 1;
+}
+
+.tribute-author-box {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.tribute-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #141B2D;
+  color: var(--gold-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-ribbon);
+  font-weight: 700;
+  font-size: 1.35rem;
+  border: 1.5px solid var(--gold-primary);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  flex-shrink: 0;
+}
+
+.tribute-author-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.tribute-author-name {
+  font-family: var(--font-sans);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--ink-primary);
+  line-height: 1.25;
+}
+
+.tribute-relation-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: var(--gold-light);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin-top: 3px;
+  background: rgba(229, 192, 123, 0.12);
+  padding: 2px 9px;
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(229, 192, 123, 0.35);
+  width: fit-content;
+}
+
+/* Wax Seal Style Symbol Badge */
+.tribute-symbol-badge {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: var(--gold-gradient);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+  border: 2px solid rgba(229, 192, 123, 0.6);
+  flex-shrink: 0;
+  transition: transform var(--transition-fast);
+}
+
+.tribute-card:hover .tribute-symbol-badge {
+  transform: rotate(12deg) scale(1.08);
+}
+
+.tribute-body {
+  font-size: 1.02rem;
+  color: var(--ink-secondary);
+  line-height: 1.7;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 1;
+  word-break: break-word;
+}
+
+/* Attached Photo inside Tribute */
+.tribute-photo-attachment,
+.tribute-card-media {
+  margin-top: 14px;
+  margin-bottom: 20px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid rgba(229, 192, 123, 0.22);
+  background: rgba(14, 5, 8, 0.7);
+  cursor: pointer;
+  position: relative;
+  width: 100%;
+  box-shadow: 0 4px 16px rgba(10, 3, 5, 0.5);
+}
+
+.tribute-photo-attachment img,
+.tribute-card-media img {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  max-height: 340px;
+  object-fit: cover;
+  object-position: center 20%;
+  transition: transform 0.4s ease;
+  display: block;
+}
+
+.tribute-photo-attachment:hover img,
+.tribute-card-media:hover img {
+  transform: scale(1.03);
+}
+
+.tribute-photo-attachment::after,
+.tribute-card-media::after {
+  content: 'Enlarge';
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  background: rgba(9, 12, 19, 0.85);
+  color: var(--gold-light);
+  border: 1px solid var(--hairline-medium);
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: var(--radius-xs);
+  backdrop-filter: blur(4px);
+  pointer-events: none;
+}
+
+.tribute-footer-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 16px;
+  border-top: 1px solid var(--hairline-light);
+  font-size: 0.84rem;
+  color: var(--ink-muted);
+  position: relative;
+  z-index: 1;
+}
+
+.tribute-like-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--hairline-medium);
+  padding: 5px 12px;
+  border-radius: var(--radius-full);
+  color: var(--ink-secondary);
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.tribute-like-btn:hover {
+  background: rgba(229, 192, 123, 0.15);
+  border-color: var(--gold-primary);
+  color: var(--gold-light);
+}
+
+.tribute-like-btn.liked {
+  background: rgba(255, 94, 108, 0.15);
+  border-color: #FF5E6C;
+  color: #FF5E6C;
+}
+
+.tributes-empty {
+  text-align: center;
+  padding: 60px 20px;
+  background: linear-gradient(145deg, rgba(45, 14, 22, 0.35) 0%, rgba(31, 16, 10, 0.42) 100%);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1.5px dashed rgba(229, 192, 123, 0.25);
+  border-radius: var(--radius-lg);
+  color: var(--ink-muted);
+}
+
+/* ===================================================================
+   3. PHOTO GALLERY & MEMORY BOARD (EDITORIAL EXHIBITION)
+   =================================================================== */
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.gallery-item {
+  position: relative;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: linear-gradient(145deg, rgba(45, 14, 22, 0.40) 0%, rgba(31, 16, 10, 0.46) 100%);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(229, 192, 123, 0.16);
+  box-shadow: 0 10px 28px -5px rgba(10, 3, 5, 0.55);
+  cursor: pointer;
+  transition: all var(--transition-smooth);
+}
+
+.gallery-item:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-card-hover), 0 0 25px rgba(229, 192, 123, 0.15);
+  border-color: var(--gold-primary);
+}
+
+.gallery-thumb-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: #14080B;
+}
+
+.gallery-thumb-wrap img,
+.gallery-item img.gallery-thumb {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  display: block;
+}
+
+.gallery-item:hover .gallery-thumb-wrap img,
+.gallery-item:hover img.gallery-thumb {
+  transform: scale(1.05);
+}
+
+.gallery-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 40%, rgba(6, 8, 14, 0.9) 100%);
+  opacity: 0;
+  display: flex;
+  align-items: flex-end;
+  padding: 16px;
+  transition: opacity var(--transition-fast);
+}
+
+.gallery-item:hover .gallery-overlay {
+  opacity: 1;
+}
+
+.gallery-caption {
+  color: #FFFFFF;
+  font-size: 0.88rem;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.gallery-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: rgba(9, 12, 19, 0.88);
+  border: 1px solid var(--hairline-medium);
+  color: var(--gold-light);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+/* ===================================================================
+   4. LIFE JOURNEY & MILESTONES (EDITORIAL TIMELINE)
+   =================================================================== */
+
+.timeline-container {
+  position: relative;
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 20px 0;
+}
+
+.timeline-line {
+  position: absolute;
+  left: 32px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--hairline-medium);
+}
+
+.timeline-milestone {
+  position: relative;
+  display: flex;
+  gap: 28px;
+  margin-bottom: 40px;
+}
+
+.timeline-milestone:last-child {
+  margin-bottom: 0;
+}
+
+.timeline-node {
+  position: relative;
+  z-index: 2;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #48111D 0%, #250A11 100%);
+  border: 2px solid var(--gold-primary);
+  box-shadow: 0 4px 14px rgba(10, 3, 5, 0.6), 0 0 15px rgba(229, 192, 123, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  flex-shrink: 0;
+}
+
+.timeline-card {
+  flex: 1;
+  background: linear-gradient(145deg, rgba(45, 14, 22, 0.42) 0%, rgba(31, 16, 10, 0.48) 100%);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(229, 192, 123, 0.16);
+  border-radius: var(--radius-md);
+  padding: 26px 30px;
+  box-shadow: 0 12px 35px -6px rgba(10, 3, 5, 0.55), 0 0 20px rgba(77, 18, 32, 0.12);
+  transition: all var(--transition-fast);
+}
+
+.timeline-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--gold-primary);
+  box-shadow: var(--shadow-card-hover), 0 0 20px rgba(229, 192, 123, 0.12);
+}
+
+.milestone-year {
+  font-family: var(--font-monument);
+  font-size: 1.15rem;
+  letter-spacing: 1.8px;
+  color: var(--gold-deep);
+  margin-bottom: 4px;
+}
+
+.milestone-title {
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--ink-primary);
+  margin-bottom: 10px;
+}
+
+.milestone-text {
+  color: var(--ink-secondary);
+  font-size: 0.98rem;
+  line-height: 1.65;
+}
+
+/* ===================================================================
+   5. LIGHTBOX MODAL
+   =================================================================== */
+
+.lightbox-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(10, 10, 12, 0.94);
+  backdrop-filter: blur(12px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: all var(--transition-fast);
+}
+
+.lightbox-modal.open,
+.lightbox-modal.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.lightbox-content {
+  position: relative;
+  max-width: 90vw;
+  max-height: 88vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.lightbox-img {
+  max-width: 100%;
+  max-height: 76vh;
+  object-fit: contain;
+  border-radius: var(--radius-sm);
+  box-shadow: 0 16px 50px rgba(0, 0, 0, 0.6);
+}
+
+.lightbox-caption-bar {
+  margin-top: 14px;
+  color: #FFFFFF;
+  font-size: 0.95rem;
+  text-align: center;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 20px;
+  right: 28px;
+  color: #FFFFFF;
+  font-size: 2.2rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 1010;
+}
+
+.lightbox-prev,
+.lightbox-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.15);
+  border: none;
+  color: #FFFFFF;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  font-size: 1.4rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(4px);
+  transition: all var(--transition-fast);
+}
+
+.lightbox-prev:hover,
+.lightbox-next:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.lightbox-prev { left: 24px; }
+.lightbox-next { right: 24px; }
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .tribute-controls-bar {
+    border-radius: var(--radius-md);
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .tributes-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .timeline-line {
+    left: 20px;
+  }
+
+  .timeline-node {
+    width: 42px;
+    height: 42px;
+    font-size: 1.2rem;
+  }
+
+  .timeline-milestone {
+    gap: 16px;
+  }
+
+  .timeline-card {
+    padding: 20px;
+  }
+}

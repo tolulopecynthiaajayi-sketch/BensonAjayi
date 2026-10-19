@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Benson Ajayi — Diamond Jubilee Retrospective & 60th Celebration (1966 – 2026)</title>
+  
+  <!-- SEO & Social Sharing Metadata -->
+  <meta name="description" content="A digital celebration of 60 glorious years of Benson Ajayi (1966 – 2026). Leave heartfelt tributes, dedicate scriptures, raise toasts, and share cherished photo memories.">
+  <meta property="og:title" content="Benson Ajayi — 60th Diamond Jubilee Celebration & Tributes">
+  <meta property="og:description" content="Inscribe your prayers, memories, and blessings to celebrate Daddy Benson Ajayi's 60th Birthday!">
+  <meta property="og:image" content="assets/photos/benson-ajayi-avatar.jpg">
+  <meta property="og:type" content="website">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%230A111F%22/><text y=%2268%22 x=%2250%22 text-anchor=%22middle%22 font-family=%22Cinzel, serif%22 font-weight=%22700%22 font-size=%2252%22 fill=%22%23E5C07B%22>60</text></svg>">
+  
+  <!-- Google Fonts: Cormorant Garamond, Cinzel, Plus Jakarta Sans, Alex Brush -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@500;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/main.css?v=67">
+  <link rel="stylesheet" href="css/tribute-gallery.css?v=67">
+  <link rel="stylesheet" href="css/thanksgiving-sanctuary.css?v=67">
+</head>
+<body>
+
+  <!-- ===================================================================
+       GRAND ENTRANCE PORTAL: SPLIT DOUBLE PALACE DOORS
+       A monumental glowing 60 on closed royal doors.
+       When opened, the doors slide left and right, ushering visitors inside.
+       =================================================================== -->
+  <div class="jubilee-door-portal" id="jubilee-portal" aria-label="Entrance Portal to the 60th Jubilee Celebration">
+    <!-- Left Palace Door Panel -->
+    <div class="portal-door-panel door-panel-left">
+      <div class="door-architectural-frame"></div>
+    </div>
+
+    <!-- Right Palace Door Panel -->
+    <div class="portal-door-panel door-panel-right">
+      <div class="door-architectural-frame"></div>
+    </div>
+
+    <!-- Central Monumental 60 & Enter Trigger -->
+    <div class="portal-centerpiece-stage">
+      <div class="portal-massive-aura" aria-hidden="true"></div>
+      <div class="portal-eyebrow-tag">Diamond Jubilee Celebration • 1966 – 2026</div>
+      <div class="portal-massive-60">60<span class="portal-massive-th">th</span></div>
+      <button class="portal-enter-button" id="portal-open-btn" onclick="openPortalDoors(event)" aria-label="Open doors and enter celebration experience">
+        <span class="button-label">Enter Experience</span>
+        <span class="button-arrow">→</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- ===================================================================
+       GLOBAL FADED PHOTOGRAPHIC BACKGROUND (PAGE-WIDE WATERMARK)
+       Subtle, elegant photographic backdrop of Daddy Benson across the whole page.
+       =================================================================== -->
+  <div class="site-faded-backdrop" aria-hidden="true"></div>
+
+  <!-- ===================================================================
+       1. EDITORIAL PUBLICATION MASTHEAD (TOP BAR)
+       =================================================================== -->
+  <header class="publication-masthead" id="top-nav">
+    <div class="container">
+      <div class="masthead-inner">
+        <a href="#cover-section" class="masthead-brand" id="brand-link" title="Benson Ajayi 60th Jubilee Celebration">
+          <div class="masthead-seal">BA</div>
+          <div class="masthead-title-wrap">
+            <span class="masthead-title">Benson Ajayi</span>
+            <span class="masthead-edition">60th Diamond Jubilee • 1966 – 2026</span>
+          </div>
+        </a>
+
+        <!-- Chapter Navigation -->
+        <nav aria-label="Celebration chapters">
+          <ul class="masthead-chapters">
+            <li><a href="#foreword-section" class="chapter-nav-link" id="nav-foreword">Foreword</a></li>
+            <li><a href="#tributes-section" class="chapter-nav-link active" id="nav-tributes">Tributes</a></li>
+            <li><a href="#thanksgiving-section" class="chapter-nav-link" id="nav-thanksgiving">Praise & Thanksgiving</a></li>
+            <li><a href="#gallery-section" class="chapter-nav-link" id="nav-gallery">Visual Archive</a></li>
+            <li><a href="#biography-section" class="chapter-nav-link" id="nav-biography">Biography</a></li>
+          </ul>
+        </nav>
+
+        <!-- Actions: Audio Serenity & Inscribe Tribute -->
+        <div class="masthead-actions">
+          <button class="audio-player-pill" id="audio-toggle-btn" title="Play King Sunny Ade's 60th Birthday Celebration Melody">
+            <div class="audio-bars">
+              <span class="audio-bar"></span>
+              <span class="audio-bar"></span>
+              <span class="audio-bar"></span>
+            </div>
+            <span id="audio-status-text">Sunny Ade Track</span>
+          </button>
+
+          <button class="btn-masthead-cta trigger-open-tribute" id="nav-tribute-btn">
+            <span>Inscribe Tribute</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===================================================================
+       2. THE JUBILEE CELEBRATION COVER (HERO SECTION)
+          Spacious, cinematic editorial cover with unified high-resolution
+          photography of Daddy Benson, champagne gold accents, and
+          clean, uncluttered timeless typography.
+       =================================================================== -->
+  <section class="jubilee-hero-section" id="cover-section">
+    <!-- Cinematic Full-Width Background Photographic Canvas (Unobstructed Portrait) -->
+    <div class="hero-backdrop-media" id="hero-portal-trigger" title="Click to view Daddy Benson's portrait in full gallery">
+      <img src="assets/photos/hero-armchair-framed.jpg" alt="Daddy Benson Ajayi 60th Birthday Celebration" class="hero-bg-photo">
+      <div class="hero-bg-overlay"></div>
+    </div>
+
+    <!-- Clean Bottom Container on Hero (Zero overlays obscuring Daddy Benson) -->
+    <div class="hero-bottom-container">
+      <div class="container hero-bottom-inner">
+        <a href="#jubilee-commemoration" class="hero-scroll-cue-compact" aria-label="Explore the 60th Jubilee celebration">
+          <span class="cue-label">Explore Celebration</span>
+          <span class="cue-arrow">↓</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       THE 60TH AS A STANDALONE CHARACTER MONUMENT
+       A sculptured, living, shining character that radiates prestige.
+       Zero text following it — stands purely, proudly on its own.
+       =================================================================== -->
+  <section class="jubilee-character-monument" id="jubilee-commemoration" aria-label="The 60th Milestone Character Monument">
+    <div class="monument-ambient-aura" aria-hidden="true"></div>
+    <div class="container">
+      <div class="monument-inner">
+        <div class="monument-hairline left"></div>
+        <div class="monument-sculpture-wrap">
+          <div class="glint-sparkle top" aria-hidden="true"></div>
+          <span class="monument-character-60">60<span class="monument-th">th</span></span>
+          <div class="glint-sparkle bottom" aria-hidden="true"></div>
+        </div>
+        <div class="monument-hairline right"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       3. CHAPTER I: THE FOREWORD (THE PATRIARCH'S SPREAD)
+       =================================================================== -->
+  <section class="chapter-section-wrapper" id="foreword-section" style="padding-top: 20px;">
+    <div class="container">
+      <div class="chapter-header">
+        <span class="chapter-numeral-tag">Chapter I</span>
+        <h2 class="chapter-title">The Patriarch's Walk</h2>
+        <p class="chapter-lead-text">
+          Reflecting on a lifetime marked by dedication to family, steadfast reverence for God, and an extraordinary spirit of generosity.
+        </p>
+        <div class="editorial-divider">
+          <span class="editorial-divider-line"></span>
+          <span class="editorial-divider-icon">✦</span>
+          <span class="editorial-divider-line"></span>
+        </div>
+      </div>
+
+      <div class="foreword-magazine-spread">
+        <div class="foreword-prose">
+          <p class="foreword-body-text">
+            <span class="foreword-drop-cap">O</span>ver the span of six remarkable decades, Benson Ajayi has stood as a beacon of integrity, spiritual grounding, and unconditional paternal devotion. To know him is to experience a gentle warmth that puts everyone at ease, a quiet wisdom that guides without imposing, and a heart that perpetually puts family and faith above all else.
+          </p>
+          <p class="foreword-body-text">
+            From humble beginnings in 1966 to reaching this magnificent Diamond Jubilee in 2026, his life exemplifies the beauty of a path walked in divine favor. As his children, family, and lifelong companions, we gather these pages as a living monument of honour, thanksgiving, and boundless love.
+          </p>
+          <div class="foreword-signature-box">
+            <div class="foreword-signature">The Ajayi Family</div>
+            <div class="foreword-dedication-label">October 24, 2026</div>
+          </div>
+        </div>
+
+        <div class="foreword-photo-feature">
+          <img src="assets/photos/foreword-benson-ololade.jpg" alt="Daddy Benson Ajayi and his beloved wife Ololade Hannah Benson-Ajayi" loading="lazy">
+          <div class="foreword-photo-caption">
+            A radiant moment of shared love, devotion, and divine grace with his beloved wife, Ololade Hannah.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       4. CHAPTER II: INSCRIBED TRIBUTES (GUESTBOOK)
+       =================================================================== -->
+  <section class="chapter-section-wrapper" id="tributes-section">
+    <div class="container">
+      <div class="chapter-header">
+        <span class="chapter-numeral-tag">Chapter II</span>
+        <h2 class="chapter-title">Letters of Honour & Gratitude</h2>
+        <p class="chapter-lead-text">
+          Personal correspondence, prayers, and heartfelt tributes inscribed by children, wife, extended family, colleagues, and lifelong friends.
+        </p>
+        <div class="editorial-divider">
+          <span class="editorial-divider-line"></span>
+          <span class="editorial-divider-icon">✦</span>
+          <span class="editorial-divider-line"></span>
+        </div>
+      </div>
+
+      <!-- Controls: Category Filters & Search Bar -->
+      <div class="tribute-controls-bar">
+        <div class="tribute-filters">
+          <button class="filter-btn active" data-filter="all" id="filter-all">All Letters</button>
+          <button class="filter-btn" data-filter="family" id="filter-family">Family</button>
+          <button class="filter-btn" data-filter="friends" id="filter-friends">Friends</button>
+          <button class="filter-btn" data-filter="church" id="filter-church">Church & Community</button>
+        </div>
+
+        <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
+          <div class="tribute-search-wrap">
+            <span class="tribute-search-icon" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            </span>
+            <input type="text" class="tribute-search-input" id="tribute-search" placeholder="Search correspondence..." aria-label="Search tributes">
+          </div>
+          <button class="btn-masthead-cta trigger-open-tribute" id="btn-add-tribute-inline">
+            <span>Write a Letter</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Tributes Dynamic Grid -->
+      <div class="tributes-grid" id="tributes-container">
+        <!-- Rendered dynamically by app.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       5. CHAPTER III: COVENANT OF PRAISE & THANKSGIVING (DEDICATED TO GOD)
+       =================================================================== -->
+  <section class="chapter-section-wrapper" id="thanksgiving-section">
+    <div class="container">
+      <div class="thanksgiving-sanctuary-section">
+        <div class="sanctuary-inner-wrap">
+          <div class="sanctuary-header">
+            <span class="sanctuary-pretitle">Chapter III • Dedicated to the Almighty God</span>
+            <h2 class="sanctuary-title">The Sanctuary of Praise & Thanksgiving</h2>
+            <p class="sanctuary-desc">
+              Dedicated in profound gratitude to the Almighty God for six decades of divine health, steadfast protection, wisdom, and boundless grace upon Daddy Benson Ajayi. Inscribe a sacred scripture blessing or raise a celebratory jubilee toast in his honor.
+            </p>
+            <div class="editorial-divider">
+              <span class="editorial-divider-line"></span>
+              <span class="editorial-divider-icon">✦</span>
+              <span class="editorial-divider-line"></span>
+            </div>
+          </div>
+
+          <!-- Offerings Category Filter -->
+          <div class="sanctuary-filter-bar">
+            <button class="sanctuary-filter-btn active" data-sanctuary-filter="all">All Offerings</button>
+            <button class="sanctuary-filter-btn" data-sanctuary-filter="scripture">Sacred Scriptures</button>
+            <button class="sanctuary-filter-btn" data-sanctuary-filter="toast">Jubilee Toasts</button>
+          </div>
+
+          <!-- Dynamic Grid of Offerings -->
+          <div class="sanctuary-offerings-grid" id="blessings-container">
+            <!-- Rendered dynamically by app.js -->
+          </div>
+
+          <!-- Action Trigger -->
+          <div class="sanctuary-actions">
+            <button class="btn-masthead-cta trigger-open-blessing" id="sanctuary-dedicate-btn">
+              <span>Dedicate a Scripture or Jubilee Toast</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       6. CHAPTER IV: THE VISUAL RETROSPECTIVE (PHOTO GALLERY)
+       =================================================================== -->
+  <section class="chapter-section-wrapper" id="gallery-section">
+    <div class="container">
+      <div class="chapter-header">
+        <span class="chapter-numeral-tag">Chapter IV</span>
+        <h2 class="chapter-title">The Visual Retrospective</h2>
+        <p class="chapter-lead-text">
+          An art exhibition of cherished moments, cultural festivities, milestone celebrations, and family joy captured across six decades.
+        </p>
+        <div class="editorial-divider">
+          <span class="editorial-divider-line"></span>
+          <span class="editorial-divider-icon">✦</span>
+          <span class="editorial-divider-line"></span>
+        </div>
+      </div>
+
+      <div style="display: flex; justify-content: flex-end; margin-bottom: 24px;">
+        <button class="btn-masthead-cta trigger-open-photo" id="btn-upload-photo-main">
+          <span>Upload Archival Photo with Daddy</span>
+        </button>
+      </div>
+
+      <!-- Masonry Gallery -->
+      <div class="gallery-grid" id="gallery-container">
+        <!-- Rendered dynamically by app.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       7. CHAPTER V: THE BIOGRAPHY OF BENSON AJAYI
+       =================================================================== -->
+  <section class="chapter-section-wrapper" id="biography-section">
+    <div class="container">
+      <div class="chapter-header">
+        <span class="chapter-numeral-tag">Chapter V</span>
+        <h2 class="chapter-title">The Biography of Benson Ajayi</h2>
+        <p class="chapter-lead-text">
+          A life of purpose, scholarship, corporate distinction, and steadfast family devotion across six remarkable decades.
+        </p>
+        <div class="editorial-divider">
+          <span class="editorial-divider-line"></span>
+          <span class="editorial-divider-icon">✦</span>
+          <span class="editorial-divider-line"></span>
+        </div>
+      </div>
+
+      <!-- Magazine Grid: 4 Foundations of Life & Legacy -->
+      <div class="biography-magazine-grid">
+        <!-- 1. Genesis & Parentage -->
+        <article class="bio-card bio-card-heritage">
+          <div class="bio-card-header">
+            <span class="bio-chapter-tag">Genesis & Parentage</span>
+            <div class="bio-icon-seal">I</div>
+          </div>
+          <h3 class="bio-card-title">Born into Love & Faith</h3>
+          <p class="bio-card-text">
+            Born into a loving home on the <strong>24th of October 1966</strong> to <strong>Mrs. Olufunke Esther Ajayi</strong> and <strong>Mr. Isaac Akinola Ajayi</strong>. From early childhood, his upbringing was steeped in strong moral principles, humility, godliness, and a spirit of diligence that formed the cornerstone of his life.
+          </p>
+          <div class="bio-meta-row">
+            <span class="bio-meta-pill">24th October 1966</span>
+            <span class="bio-meta-pill">Christian Household</span>
+          </div>
+        </article>
+
+        <!-- 2. Academic Foundations & Higher Learning -->
+        <article class="bio-card bio-card-education">
+          <div class="bio-card-header">
+            <span class="bio-chapter-tag">Education & Scholarship</span>
+            <div class="bio-icon-seal">II</div>
+          </div>
+          <h3 class="bio-card-title">Academic Foundations</h3>
+          <p class="bio-card-text">
+            Nurtured through distinguished academic institutions, building intellectual rigor, discipline, and lifelong friendships:
+          </p>
+          <div class="bio-education-path">
+            <div class="edu-step">
+              <span class="edu-level">Primary Education</span>
+              <span class="edu-school">Bishop Philips Primary School</span>
+            </div>
+            <div class="edu-step">
+              <span class="edu-level">Grammar & Secondary</span>
+              <span class="edu-school">St. Ambrose's Grammar School</span>
+              <span class="edu-subschool">St. Joseph Secondary School</span>
+            </div>
+            <div class="edu-step">
+              <span class="edu-level">Higher & Tertiary Education</span>
+              <span class="edu-school">Federal Polytechnic, Ado-Ekiti</span>
+              <span class="edu-subschool">Obafemi Awolowo University (OAU), Ile-Ife</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- 3. Professional Distinction & Corporate Career -->
+        <article class="bio-card bio-card-career">
+          <div class="bio-card-header">
+            <span class="bio-chapter-tag">Corporate Leadership</span>
+            <div class="bio-icon-seal">III</div>
+          </div>
+          <h3 class="bio-card-title">Distinction in Enterprise</h3>
+          <p class="bio-card-text">
+            A seasoned professional career distinguished by steadfast integrity, strategic stewardship, and exemplary leadership across foremost institutions and conglomerates:
+          </p>
+          <div class="bio-corporate-tags">
+            <span class="corp-tag">Michael Stevens</span>
+            <span class="corp-tag">UAC</span>
+            <span class="corp-tag">NCR</span>
+            <span class="corp-tag">ARM</span>
+            <span class="corp-tag">LCC</span>
+            <span class="corp-tag">Mixta Africa</span>
+          </div>
+          <div class="bio-meta-row" style="margin-top: 20px;">
+            <span class="bio-meta-pill">Professional Excellence</span>
+            <span class="bio-meta-pill">Integrity & Diligence</span>
+          </div>
+        </article>
+
+        <!-- 4. Sacred Matrimony & Family Legacy -->
+        <article class="bio-card bio-card-family">
+          <div class="bio-card-header">
+            <span class="bio-chapter-tag">Matrimony & Heritage</span>
+            <div class="bio-icon-seal">IV</div>
+          </div>
+          <h3 class="bio-card-title">A Blessed Home & Sanctuary</h3>
+          <p class="bio-card-text">
+            Happily married to his beloved life partner and jewel, <strong>Mrs. Ololade Hannah Benson-Ajayi</strong>. Their fruitful union is blessed with <strong>four wonderful children</strong>, creating a warm, faith-filled sanctuary of unconditional love, prayer, laughter, and generational favor.
+          </p>
+          <div class="bio-meta-row">
+            <span class="bio-meta-pill">Married to Ololade Hannah Benson-Ajayi</span>
+            <span class="bio-meta-pill">Blessed with 4 Children</span>
+          </div>
+        </article>
+      </div>
+
+      <!-- Narrative Pull-Quote Summary Card -->
+      <div class="biography-narrative-card">
+        <div class="narrative-quote-mark">“</div>
+        <p class="narrative-prose">
+          Born into a loving home on the 24th of October 1966 to Mrs. Olufunke Esther Ajayi and Mr. Isaac Akinola Ajayi. He schooled in Bishop Philips Primary School, St. Ambrose's Grammar School, and St. Joseph Secondary School. He advanced through the Federal Polytechnic Ado-Ekiti, then Obafemi Awolowo University. His corporate journey traversed Michael Stevens, UAC, NCR, ARM, LCC, and Mixta Africa. Married to Ololade Hannah Benson-Ajayi, they are blessed with 4 children.
+        </p>
+        <div class="narrative-citation">
+          <span class="citation-author">Daddy Benson Ajayi</span>
+          <span class="citation-date">1966 – 2026</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       6. PUBLISHING COLOPHON & FOOTER
+       =================================================================== -->
+  <footer class="monograph-colophon-footer">
+    <div class="container">
+      <div class="colophon-seal">
+        <img src="assets/photos/benson-ajayi-avatar.jpg?v=6" alt="Benson Ajayi">
+      </div>
+      <h4 class="colophon-title">Benson Ajayi</h4>
+      <p class="colophon-text">The 60th Diamond Jubilee Celebration (1966 – 2026)</p>
+      <div class="editorial-divider" style="margin-bottom: 20px;">
+        <span class="editorial-divider-line"></span>
+        <span class="editorial-divider-icon">✦</span>
+        <span class="editorial-divider-line"></span>
+      </div>
+      <p class="colophon-credit">Curated with love by his children & family</p>
+    </div>
+  </footer>
+
+  <!-- ===================================================================
+       MODAL 1: INSCRIBE A TRIBUTE (GUESTBOOK)
+       =================================================================== -->
+  <div class="modal-backdrop" id="tribute-modal" role="dialog" aria-modal="true" aria-labelledby="tribute-modal-title">
+    <div class="modal-window">
+      <div class="modal-header">
+        <h3 class="modal-title" id="tribute-modal-title">
+          <span>Inscribe a Letter of Tribute</span>
+        </h3>
+        <button class="modal-close-btn" aria-label="Close modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        
+        <!-- Prompt Inspiration Chips -->
+        <div class="prompt-chips-wrap">
+          <span class="prompt-chips-label">Need inspiration? Tap to use a heartfelt prompt:</span>
+          <div class="prompt-chips">
+            <button type="button" class="prompt-chip" data-prompt="Happy 60th Birthday, Daddy! Wishing you abundant joy, divine health, and overflowing peace for all the years ahead. You are our pillar!">Happy 60th Birthday, Daddy...</button>
+            <button type="button" class="prompt-chip" data-prompt="Daddy, you have been my greatest hero and mentor. Thank you for your endless sacrifices, wisdom, and unconditional love.">My greatest hero & mentor...</button>
+            <button type="button" class="prompt-chip" data-prompt="Thank you for leading our family in steadfast faith, integrity, and prayer. May God continually renew your strength like the eagle's!">Faith, integrity & prayers...</button>
+            <button type="button" class="prompt-chip" data-prompt="A cherished memory I will forever treasure with Daddy is...">A cherished memory with Daddy...</button>
+          </div>
+        </div>
+
+        <form id="tribute-form">
+          
+          <div class="form-group">
+            <label class="form-label" for="tribute-name">Your Full Name *</label>
+            <input type="text" id="tribute-name" class="form-input" placeholder="e.g. Tolulope Ajayi" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="tribute-relation">Your Relationship with Daddy</label>
+            <select id="tribute-relation" class="form-select">
+              <option value="Son">Son</option>
+              <option value="Daughter">Daughter</option>
+              <option value="Wife">Wife</option>
+              <option value="Grandchild">Grandchild</option>
+              <option value="Brother">Brother</option>
+              <option value="Sister">Sister</option>
+              <option value="In-law">In-law</option>
+              <option value="Friend">Close Friend</option>
+              <option value="Colleague">Colleague / Associate</option>
+              <option value="Church Member">Church Family / Elder</option>
+              <option value="Well-wisher">Well-wisher</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Select a Tribute Seal</label>
+            <div class="symbol-selector">
+              <div class="symbol-option selected" data-symbol="✦" title="Honor">✦</div>
+              <div class="symbol-option" data-symbol="60" title="Milestone">60</div>
+              <div class="symbol-option" data-symbol="BA" title="Monogram">BA</div>
+              <div class="symbol-option" data-symbol="♥" title="Devotion">♥</div>
+              <div class="symbol-option" data-symbol="✝" title="Faith & Blessing">✝</div>
+              <div class="symbol-option" data-symbol="★" title="Excellence">★</div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="tribute-message">Your Tribute / Birthday Wish *</label>
+            <textarea id="tribute-message" class="form-textarea" placeholder="Share your heartfelt memories, prayer, or celebratory words for Daddy Benson..." required></textarea>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Attach a Cherished Photo (Optional)</label>
+            <input type="file" id="tribute-photo-input" accept="image/*" style="display: none;">
+            <div style="display: flex; gap: 10px; align-items: center;">
+              <button type="button" class="btn-outline-gold" onclick="document.getElementById('tribute-photo-input').click()">
+                <span>Select Photo</span>
+              </button>
+              <span id="tribute-photo-filename" style="font-size: 0.85rem; color: var(--ink-muted);">No file chosen</span>
+            </div>
+            <div id="tribute-photo-preview" style="display: none; margin-top: 12px; position: relative; width: 140px; height: 100px; border-radius: var(--radius-sm); overflow: hidden; border: 1px solid var(--hairline-medium);">
+              <img src="" alt="Tribute preview" style="width: 100%; height: 100%; object-fit: cover;">
+              <button type="button" id="remove-tribute-photo" style="position: absolute; top: 4px; right: 4px; background: rgba(0,0,0,0.7); color: #FFF; border: none; border-radius: 50%; width: 22px; height: 22px; font-size: 14px; cursor: pointer; display: flex; align-items: center; justify-content: center;">&times;</button>
+            </div>
+          </div>
+
+          <div style="display: flex; justify-content: flex-end; gap: 12px; margin-top: 24px;">
+            <button type="button" class="btn-outline-gold modal-cancel-btn">Cancel</button>
+            <button type="submit" class="btn-masthead-cta" id="submit-tribute-btn">
+              <span>Publish Inscription</span>
+            </button>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================================================================
+       MODAL 2: DEDICATE A SCRIPTURE, JUBILEE TOAST OR 60TH STICKER
+       =================================================================== -->
+  <div class="modal-backdrop" id="candle-modal" role="dialog" aria-modal="true" aria-labelledby="candle-modal-title">
+    <div class="modal-window">
+      <div class="modal-header">
+        <h3 class="modal-title" id="candle-modal-title">
+          <span>Dedicate a Scripture or Jubilee Toast</span>
+        </h3>
+        <button class="modal-close-btn" aria-label="Close modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form id="candle-form">
+          <div class="form-group">
+            <label class="form-label" for="candle-name">Your Full Name *</label>
+            <input type="text" id="candle-name" class="form-input" placeholder="e.g. Pastor & Mrs. Ogunleye" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="candle-relation">Your Relationship with Daddy</label>
+            <select id="candle-relation" class="form-select">
+              <option value="Family">Family Member</option>
+              <option value="Child">Son / Daughter</option>
+              <option value="Wife">Wife</option>
+              <option value="Grandchild">Grandchild</option>
+              <option value="Church Member">Church Family / Elder</option>
+              <option value="Friend">Lifelong Friend</option>
+              <option value="Colleague">Colleague / Associate</option>
+              <option value="Well-wisher">Well-wisher</option>
+            </select>
+          </div>
+
+          <!-- Offering Type Selector -->
+          <div class="form-group">
+            <label class="form-label">Choose Type of Offering *</label>
+            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px;">
+              <label class="blessing-type-card selected" id="type-opt-scripture" style="display: flex; flex-direction: column; align-items: center; padding: 14px 10px; border: 2px solid var(--gold-primary); background: var(--gold-lighter); border-radius: var(--radius-sm); cursor: pointer; text-align: center;">
+                <input type="radio" name="blessing-type" value="scripture" checked style="display: none;">
+                <span style="font-family: var(--font-serif); font-size: 1.4rem; font-style: italic; color: var(--gold-primary); margin-bottom: 4px;">✦</span>
+                <span style="font-size: 0.84rem; font-weight: 700; color: var(--ink-primary);">Holy Scripture</span>
+              </label>
+
+              <label class="blessing-type-card" id="type-opt-toast" style="display: flex; flex-direction: column; align-items: center; padding: 14px 10px; border: 1px solid var(--hairline-medium); background: rgba(255, 255, 255, 0.05); border-radius: var(--radius-sm); cursor: pointer; text-align: center;">
+                <input type="radio" name="blessing-type" value="toast" style="display: none;">
+                <span style="font-family: var(--font-serif); font-size: 1.4rem; font-style: italic; color: var(--gold-primary); margin-bottom: 4px;">✦</span>
+                <span style="font-size: 0.84rem; font-weight: 700; color: var(--ink-secondary);">Jubilee Toast</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Scripture Offering Fields -->
+          <div id="section-scripture-fields">
+            <div class="prompt-chips-wrap" style="margin-bottom: 14px;">
+              <span class="prompt-chips-label">Quick-dedicate a sacred verse for Daddy:</span>
+              <div class="prompt-chips">
+                <button type="button" class="scripture-preset-chip prompt-chip" data-ref="Psalm 91:16" data-verse="With long life will I satisfy him, and show him my salvation.">Psalm 91:16 (With long life...)</button>
+                <button type="button" class="scripture-preset-chip prompt-chip" data-ref="Psalm 92:12-14" data-verse="The righteous shall flourish like the palm tree... they shall still bear fruit in old age, they shall be fresh and flourishing.">Psalm 92:12-14 (Flourish like a palm tree...)</button>
+                <button type="button" class="scripture-preset-chip prompt-chip" data-ref="Isaiah 46:4" data-verse="Even to your old age and gray hairs I am he, I am he who will sustain you. I have made you and I will carry you; I will sustain you and I will rescue you.">Isaiah 46:4 (Even to your old age...)</button>
+                <button type="button" class="scripture-preset-chip prompt-chip" data-ref="Numbers 6:24-26" data-verse="The LORD bless you and keep you; the LORD make his face shine on you and be gracious to you; the LORD turn his face toward you and give you peace.">Numbers 6:24-26 (The Lord bless you & keep you...)</button>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="scripture-ref-input">Scripture Reference *</label>
+              <input type="text" id="scripture-ref-input" class="form-input" placeholder="e.g. Psalm 91:16" value="Psalm 91:16">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="scripture-verse-input">Bible Verse Text *</label>
+              <textarea id="scripture-verse-input" class="form-textarea" style="min-height: 80px;" placeholder="Verse text...">With long life will I satisfy him, and show him my salvation.</textarea>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="scripture-prayer-input">Personal Thanksgiving Prayer (Optional)</label>
+              <input type="text" id="scripture-prayer-input" class="form-input" placeholder="e.g. May God grant you 60 more years of unbroken divine health!">
+            </div>
+          </div>
+
+          <!-- Jubilee Toast Fields -->
+          <div id="section-toast-fields" style="display: none;">
+            <div class="prompt-chips-wrap" style="margin-bottom: 14px;">
+              <span class="prompt-chips-label">Suggested celebratory toasts:</span>
+              <div class="prompt-chips">
+                <button type="button" class="toast-preset-chip prompt-chip" data-toast="Cheers to 60 magnificent years of health, laughter, peace of mind, and divine victory!">60 years of health & laughter...</button>
+                <button type="button" class="toast-preset-chip prompt-chip" data-toast="A roaring toast to our patriarch! Your strength, wisdom, and generosity inspire us every single day!">To our patriarch & pillar...</button>
+                <button type="button" class="toast-preset-chip prompt-chip" data-toast="Raising a diamond glass to Daddy Benson! May your joy and vitality multiply in every season!">Joy & vitality multiply...</button>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="toast-msg-input">Your Jubilee Toast *</label>
+              <textarea id="toast-msg-input" class="form-textarea" placeholder="Write your celebratory toast for Daddy Benson..." style="min-height: 90px;"></textarea>
+            </div>
+          </div>
+
+          <div style="display: flex; justify-content: flex-end; gap: 12px; margin-top: 24px;">
+            <button type="button" class="btn-outline-gold modal-cancel-btn">Cancel</button>
+            <button type="submit" class="btn-masthead-cta" id="submit-blessing-btn">
+              <span>Dedicate Offering</span>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================================================================
+       MODAL 3: UPLOAD PHOTO TO ARCHIVE
+       =================================================================== -->
+  <div class="modal-backdrop" id="photo-modal" role="dialog" aria-modal="true" aria-labelledby="photo-modal-title">
+    <div class="modal-window">
+      <div class="modal-header">
+        <h3 class="modal-title" id="photo-modal-title">
+          <span>Contribute an Archival Photo</span>
+        </h3>
+        <button class="modal-close-btn" aria-label="Close modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form id="photo-form">
+          <div class="form-group">
+            <label class="form-label">Select Photo *</label>
+            <input type="file" id="gallery-photo-input" accept="image/*" style="display: none;" required>
+            <div style="border: 2px dashed var(--hairline-medium); border-radius: var(--radius-sm); padding: 30px; text-align: center; cursor: pointer; background: var(--color-canvas);" onclick="document.getElementById('gallery-photo-input').click()">
+              <div style="font-family: var(--font-monument); font-size: 0.95rem; letter-spacing: 2px; color: var(--gold-primary); margin-bottom: 8px;">✦ ARCHIVAL UPLOAD ✦</div>
+              <div style="font-weight: 700; color: var(--ink-primary); margin-bottom: 4px;">Click to select an image from your device</div>
+              <div style="font-size: 0.8rem; color: var(--ink-muted);">PNG, JPG or WebP up to 10MB</div>
+            </div>
+            <div id="gallery-photo-preview" style="display: none; margin-top: 14px; position: relative; width: 100%; height: 200px; border-radius: var(--radius-sm); overflow: hidden; border: 1px solid var(--hairline-medium);">
+              <img src="" alt="Gallery preview" style="width: 100%; height: 100%; object-fit: contain; background: #000;">
+              <button type="button" id="remove-gallery-photo" style="position: absolute; top: 8px; right: 8px; background: rgba(0,0,0,0.7); color: #FFF; border: none; border-radius: 50%; width: 28px; height: 28px; font-size: 16px; cursor: pointer; display: flex; align-items: center; justify-content: center;">&times;</button>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="gallery-caption">Photo Caption / Memory *</label>
+            <input type="text" id="gallery-caption" class="form-input" placeholder="e.g. Celebrating Daddy's 50th Golden Jubilee with family" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="gallery-author">Uploaded By *</label>
+            <input type="text" id="gallery-author" class="form-input" placeholder="e.g. Tolulope Ajayi" required>
+          </div>
+
+          <div style="display: flex; justify-content: flex-end; gap: 12px; margin-top: 24px;">
+            <button type="button" class="btn-outline-gold modal-cancel-btn">Cancel</button>
+            <button type="submit" class="btn-masthead-cta" id="submit-gallery-btn">
+              <span>Publish to Archive</span>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================================================================
+       MODAL 4: SHARE CELEBRATION
+       =================================================================== -->
+  <div class="modal-backdrop" id="share-modal" role="dialog" aria-modal="true" aria-labelledby="share-modal-title">
+    <div class="modal-window">
+      <div class="modal-header">
+        <h3 class="modal-title" id="share-modal-title">
+          <span>Share the Celebration with Family & Friends</span>
+        </h3>
+        <button class="modal-close-btn" aria-label="Close modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p style="color: var(--ink-secondary); margin-bottom: 20px; font-size: 0.95rem; line-height: 1.6;">
+          Invite extended relatives, lifelong friends, church family, and colleagues to read Daddy Benson's story, inscribe their letters, dedicate scriptures, and share photos.
+        </p>
+
+        <div style="display: flex; flex-direction: column; gap: 12px; margin-bottom: 24px;">
+          <button class="btn-masthead-cta" id="whatsapp-share-btn" style="background: #25D366; border-color: #25D366; width: 100%;">
+            <span>Share via WhatsApp</span>
+          </button>
+          <button class="btn-outline-gold" id="copy-link-btn" style="width: 100%;">
+            <span>Copy Direct Link to Celebration</span>
+          </button>
+        </div>
+
+        <div style="background: var(--color-canvas); padding: 14px; border-radius: var(--radius-sm); border: 1px solid var(--hairline-medium); font-size: 0.85rem; word-break: break-all; color: var(--ink-secondary);">
+          <strong style="color: var(--ink-primary);">Page URL:</strong> <span id="share-url-text">https://benson-ajayi-60th.tribute.com</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================================================================
+       LIGHTBOX VIEWER
+       =================================================================== -->
+  <div class="lightbox-modal" id="lightbox-modal">
+    <button class="lightbox-close" id="lightbox-close" aria-label="Close lightbox">&times;</button>
+    <button class="lightbox-prev" id="lightbox-prev" aria-label="Previous photo">&#10094;</button>
+    <button class="lightbox-next" id="lightbox-next" aria-label="Next photo">&#10095;</button>
+    <div class="lightbox-content">
+      <img src="" alt="Enlarged retrospective memory" class="lightbox-img" id="lightbox-img">
+      <div class="lightbox-caption-bar">
+        <div id="lightbox-caption" style="font-family: var(--font-serif); font-size: 1.15rem; color: #FFFFFF; font-style: italic;"></div>
+        <div id="lightbox-author" style="font-size: 0.85rem; color: var(--gold-light); margin-top: 4px;"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Pill -->
+  <div class="toast-notice" id="toast-notice"></div>
+
+  <!-- Confetti Canvas -->
+  <canvas id="confetti-canvas" style="position: fixed; inset: 0; pointer-events: none; z-index: 9999;"></canvas>
+
+  <!-- ===================================================================
+       SCRIPTS
+       =================================================================== -->
+  <script>
+    function openPortalDoors(e) {
+      if (e) e.stopPropagation();
+      const portal = document.getElementById('jubilee-portal');
+      if (!portal || portal.classList.contains('doors-open')) return;
+      portal.classList.add('doors-open');
+
+      // 1. Play realistic antique wooden door creak, transitioning to King Sunny Ade celebration song
+      if (window.ambientPlayer && !window.ambientPlayer.isPlaying) {
+        try { window.ambientPlayer.enterWithDoorCreak(); } catch(err) {}
+      }
+
+      // 2. Burst celebratory confetti as doors swing wide open and music kicks in
+      setTimeout(() => {
+        if (window.CelebrationConfetti) {
+          try { new window.CelebrationConfetti().burst(90); } catch(err) {}
+        }
+      }, 1250);
+
+      // 3. Stately dismissal after the slow indoor door opening completes
+      setTimeout(() => {
+        portal.classList.add('portal-dismissed');
+      }, 2750);
+    }
+  </script>
+  <script src="js/db.js?v=66"></script>
+  <script src="js/confetti.js?v=66"></script>
+  <script src="js/audio.js?v=66"></script>
+  <script src="js/lightbox.js?v=66"></script>
+  <script src="js/app.js?v=66"></script>
+
+</body>
+</html>
