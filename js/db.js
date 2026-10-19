@@ -311,19 +311,13 @@ class TributeDB {
   }
 
   // -------------------------------------------------------------
-  // REAL-TIME FIRESTORE LISTENERS
+  // REAL-TIME FIRESTORE LISTENERS (NO AUTO-SEEDING ON DELETION)
   // -------------------------------------------------------------
   listenToTributes() {
     if (!this.firestoreDb) return;
 
     this.firestoreDb.collection('tributes').orderBy('createdAt', 'desc')
       .onSnapshot(snapshot => {
-        if (snapshot.empty) {
-          // First time initialization: seed initial tributes into the cloud
-          this.seedInitialTributes();
-          return;
-        }
-
         const cloudTributes = [];
         snapshot.forEach(doc => {
           cloudTributes.push({
@@ -344,11 +338,6 @@ class TributeDB {
 
     this.firestoreDb.collection('blessings').orderBy('createdAt', 'desc')
       .onSnapshot(snapshot => {
-        if (snapshot.empty) {
-          this.seedInitialBlessings();
-          return;
-        }
-
         const cloudBlessings = [];
         snapshot.forEach(doc => {
           cloudBlessings.push({
@@ -369,11 +358,6 @@ class TributeDB {
 
     this.firestoreDb.collection('photos').orderBy('createdAt', 'desc')
       .onSnapshot(snapshot => {
-        if (snapshot.empty) {
-          this.seedInitialPhotos();
-          return;
-        }
-
         const cloudPhotos = [];
         snapshot.forEach(doc => {
           cloudPhotos.push({
@@ -382,16 +366,8 @@ class TributeDB {
           });
         });
 
-        // Merge with baseline initial photos so retrospective portraits are always present
-        const combined = [...cloudPhotos];
-        INITIAL_PHOTOS.forEach(p => {
-          if (!combined.some(c => c.id === p.id || c.url === p.url)) {
-            combined.push(p);
-          }
-        });
-
-        localStorage.setItem(DB_KEYS.PHOTOS, JSON.stringify(combined));
-        this.emit('change', { type: 'photos', data: combined });
+        localStorage.setItem(DB_KEYS.PHOTOS, JSON.stringify(cloudPhotos));
+        this.emit('change', { type: 'photos', data: cloudPhotos });
       }, err => {
         console.warn('Photos live sync fallback:', err);
       });
@@ -465,9 +441,13 @@ class TributeDB {
   // -------------------------------------------------------------
   getTributes() {
     try {
-      return JSON.parse(localStorage.getItem(DB_KEYS.TRIBUTES)) || INITIAL_TRIBUTES;
+      const stored = localStorage.getItem(DB_KEYS.TRIBUTES);
+      if (stored !== null) {
+        return JSON.parse(stored);
+      }
+      return [];
     } catch (e) {
-      return INITIAL_TRIBUTES;
+      return [];
     }
   }
 
@@ -625,13 +605,13 @@ class TributeDB {
   // -------------------------------------------------------------
   getBlessings() {
     try {
-      const stored = JSON.parse(localStorage.getItem(DB_KEYS.BLESSINGS));
-      if (stored && Array.isArray(stored) && stored.length > 0) {
-        return stored;
+      const stored = localStorage.getItem(DB_KEYS.BLESSINGS);
+      if (stored !== null) {
+        return JSON.parse(stored);
       }
-      return INITIAL_BLESSINGS;
+      return [];
     } catch (e) {
-      return INITIAL_BLESSINGS;
+      return [];
     }
   }
 
