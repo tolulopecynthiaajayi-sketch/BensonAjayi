@@ -225,7 +225,7 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
 
             ${t.photoUrl ? `
-              <div class="tribute-photo-attachment" onclick="openPhotoViewer('${escapeHtml(t.photoUrl)}', '${escapeHtml(t.author)}')">
+              <div class="tribute-photo-attachment" title="Click to enlarge photo" aria-label="Enlarge photo" onclick="openPhotoViewer('${escapeHtml(t.photoUrl)}', '${escapeHtml(t.author)}')">
                 <img src="${escapeHtml(t.photoUrl)}" alt="Photo memory from ${escapeHtml(t.author)}" loading="lazy">
               </div>
             ` : ''}
