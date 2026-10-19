@@ -176,9 +176,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (filtered.length === 0) {
       tributesContainer.innerHTML = `
-        <div class="tributes-empty" style="grid-column: 1 / -1; text-align: center; padding: 48px 20px; background: #FFFFFF; border-radius: var(--radius-md); border: 1px solid var(--hairline-medium);">
+        <div class="tributes-empty" style="grid-column: 1 / -1; text-align: center; padding: 48px 20px; background: rgba(37, 10, 17, 0.55); border-radius: var(--radius-md); border: 1px dashed var(--hairline-medium); backdrop-filter: blur(12px);">
           <div style="font-family: var(--font-serif); font-size: 1.8rem; font-style: italic; color: var(--gold-primary); margin-bottom: 12px;">✦ ✦ ✦</div>
-          <h4 style="font-family: var(--font-serif); font-size: 1.35rem; color: var(--ink-primary); margin-bottom: 6px;">No letters found</h4>
+          <h4 style="font-family: var(--font-serif); font-size: 1.35rem; color: var(--ink-primary); margin-bottom: 6px;">No letters in this category yet</h4>
           <p style="color: var(--ink-muted); font-size: 0.92rem; margin-bottom: 20px;">Be the first to inscribe a letter or prayer for Daddy Benson!</p>
           <button class="btn-masthead-cta trigger-open-tribute">Write a Letter</button>
         </div>
@@ -273,10 +273,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (filtered.length === 0) {
       blessingsContainer.innerHTML = `
-        <div style="grid-column: 1 / -1; text-align: center; padding: 40px 20px; background: #FFFFFF; border-radius: var(--radius-md); border: 1px dashed var(--hairline-medium);">
+        <div style="grid-column: 1 / -1; text-align: center; padding: 44px 20px; background: rgba(37, 10, 17, 0.55); border-radius: var(--radius-md); border: 1px dashed var(--hairline-medium); backdrop-filter: blur(12px);">
           <div style="font-family: var(--font-serif); font-size: 1.8rem; font-style: italic; color: var(--gold-primary); margin-bottom: 8px;">✦ ✦ ✦</div>
           <h4 style="font-family: var(--font-serif); font-size: 1.25rem; color: var(--ink-primary); margin-bottom: 6px;">No offerings in this category yet</h4>
-          <p style="color: var(--ink-muted); font-size: 0.9rem; margin-bottom: 18px;">Be the first to dedicate a scripture or jubilee toast!</p>
+          <p style="color: var(--ink-muted); font-size: 0.9rem; margin-bottom: 18px;">Be the first to dedicate a scripture or jubilee toast for Daddy Benson!</p>
           <button class="btn-masthead-cta trigger-open-blessing">Dedicate Offering</button>
         </div>
       `;
