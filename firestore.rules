@@ -64,7 +64,8 @@ service cloud.firestore {
     match /tributes/{tributeId} {
       allow read: if true;
 
-      allow create: if hasOnlyAllowedFields(['author', 'relation', 'avatarInitials', 'symbol', 'message', 'likes', 'photoUrl', 'createdAt', 'date'])
+      allow create: if !tributeId.matches('^trib-[0-9]+$')
+        && hasOnlyAllowedFields(['author', 'relation', 'avatarInitials', 'symbol', 'message', 'likes', 'photoUrl', 'createdAt', 'date'])
         && validString('author', 1, 100)
         && validString('message', 1, 50000)
         && validOptionalString('relation', 100)
@@ -88,7 +89,8 @@ service cloud.firestore {
     match /blessings/{blessingId} {
       allow read: if true;
 
-      allow create: if hasOnlyAllowedFields(['type', 'author', 'relation', 'reference', 'verse', 'toast', 'prayer', 'amenCount', 'createdAt', 'date'])
+      allow create: if !blessingId.matches('^bless-[0-9]+$')
+        && hasOnlyAllowedFields(['type', 'author', 'relation', 'reference', 'verse', 'toast', 'prayer', 'amenCount', 'createdAt', 'date'])
         && request.resource.data.type in ['scripture', 'toast']
         && validString('author', 1, 100)
         && validOptionalString('relation', 100)
