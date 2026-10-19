@@ -482,7 +482,7 @@ class TributeDB {
       relation: String(tribute.relation || 'Family & Friend').trim().substring(0, 100),
       avatarInitials: String(tribute.avatarInitials || (tribute.author ? tribute.author.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase() : 'BA')).substring(0, 4),
       symbol: String(tribute.symbol || '✦').substring(0, 20),
-      message: String(tribute.message || '').trim().substring(0, 3000),
+      message: String(tribute.message || '').trim().substring(0, 50000),
       likes: 0,
       photoUrl: tribute.photoUrl ? String(tribute.photoUrl) : null,
       date: dateFormatted
@@ -644,10 +644,10 @@ class TributeDB {
       type: blessing.type || 'scripture',
       author: String(blessing.author || 'Church Family').trim().substring(0, 100),
       relation: String(blessing.relation || 'Family & Well-wisher').trim().substring(0, 100),
-      reference: blessing.reference ? String(blessing.reference).trim().substring(0, 200) : '',
-      verse: blessing.verse ? String(blessing.verse).trim().substring(0, 2000) : '',
-      toast: blessing.toast ? String(blessing.toast).trim().substring(0, 2000) : '',
-      prayer: blessing.prayer ? String(blessing.prayer).trim().substring(0, 2000) : '',
+      reference: blessing.reference ? String(blessing.reference).trim().substring(0, 500) : '',
+      verse: blessing.verse ? String(blessing.verse).trim().substring(0, 10000) : '',
+      toast: blessing.toast ? String(blessing.toast).trim().substring(0, 10000) : '',
+      prayer: blessing.prayer ? String(blessing.prayer).trim().substring(0, 10000) : '',
       amenCount: 1,
       date: 'Just now'
     };
