@@ -102,7 +102,7 @@
   padding: 0;
 }
 
-img {
+img, video, iframe, canvas {
   max-width: 100%;
   height: auto;
   display: block;
@@ -113,6 +113,9 @@ html {
   scroll-padding-top: 74px;
   font-size: 16px;
   -webkit-text-size-adjust: 100%;
+  overflow-x: hidden;
+  max-width: 100%;
+  width: 100%;
 }
 
 body {
@@ -128,6 +131,8 @@ body {
   min-height: 100vh;
   position: relative;
   overflow-x: hidden;
+  max-width: 100%;
+  width: 100%;
 }
 
 /* ===================================================================
@@ -137,8 +142,8 @@ body {
 .site-faded-backdrop {
   position: fixed;
   inset: 0;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   background-image: url('../assets/photos/hero-wide-benson.jpg');
   background-size: cover;
   background-position: center 20%;
@@ -168,6 +173,9 @@ body {
   position: sticky;
   top: 0;
   z-index: 200;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
   background: rgba(18, 8, 11, 0.92);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
@@ -181,7 +189,11 @@ body {
   justify-content: space-between;
   padding: 14px 0;
   gap: 16px;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
+
 
 /* Brand Identity */
 .masthead-brand {
@@ -1241,7 +1253,7 @@ body {
 
 .tribute-search-wrap {
   position: relative;
-  min-width: 260px;
+  min-width: 220px;
 }
 
 .tribute-search-input {
@@ -2333,6 +2345,20 @@ body {
   /* 60th Character Monument Mobile */
   .jubilee-character-monument {
     padding: 34px 0 20px;
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+  }
+
+  .monument-inner {
+    gap: 12px;
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+  }
+
+  .monument-sculpture-wrap {
+    padding: 8px 10px;
   }
 
   .monument-character-60 {
@@ -2344,12 +2370,16 @@ body {
   }
 
   .monument-hairline {
-    max-width: 40px;
+    max-width: 32px;
   }
 
   /* Chapter Section Wrappers */
   .chapter-section-wrapper {
     padding: 44px 0;
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+    box-sizing: border-box;
   }
 
   .chapter-header {
@@ -2377,6 +2407,9 @@ body {
     padding: 24px 18px;
     border-radius: var(--radius-sm);
     gap: 24px;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
   }
 
   .foreword-drop-cap {
@@ -2412,8 +2445,19 @@ body {
   }
 
   /* Chapter V: Biography Mobile */
+  .biography-magazine-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
   .bio-card {
-    padding: 24px 18px;
+    padding: 22px 16px;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
   }
 
   .bio-card-title {
@@ -2435,7 +2479,15 @@ body {
   }
 
   .biography-narrative-card {
-    padding: 28px 18px;
+    padding: 24px 16px;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+
+  .biography-narrative-card::before {
+    inset: 4px;
   }
 
   .narrative-quote-mark {
@@ -2444,14 +2496,30 @@ body {
   }
 
   .narrative-prose {
-    font-size: 1.02rem;
+    font-size: 0.98rem;
     line-height: 1.7;
+    margin: 0 auto 16px;
+  }
+
+  .narrative-citation {
+    flex-direction: column;
+    gap: 4px;
+    text-align: center;
+  }
+
+  .tribute-search-wrap {
+    min-width: 0 !important;
+    width: 100% !important;
   }
 
   /* Publishing Colophon Footer */
   .monograph-colophon-footer {
     padding: 38px 0 calc(32px + env(safe-area-inset-bottom, 16px));
     margin-top: 36px;
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+    box-sizing: border-box;
   }
 
   .colophon-title {

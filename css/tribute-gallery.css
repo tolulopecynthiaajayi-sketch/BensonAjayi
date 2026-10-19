@@ -56,6 +56,19 @@
   box-shadow: 0 4px 14px rgba(229, 192, 123, 0.35);
 }
 
+.tribute-search-actions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.gallery-action-bar {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 24px;
+}
+
 .tribute-search-wrap {
   position: relative;
   min-width: 260px;
@@ -622,15 +635,44 @@
     white-space: nowrap;
   }
 
-  .tribute-search-wrap {
-    min-width: 100%;
+  .tribute-search-actions {
     width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .tribute-search-wrap {
+    min-width: 0 !important;
+    width: 100% !important;
+  }
+
+  #btn-add-tribute-inline {
+    width: 100% !important;
+    justify-content: center;
+  }
+
+  .gallery-action-bar {
+    width: 100%;
+    justify-content: center;
+    margin-bottom: 18px;
+  }
+
+  #btn-upload-photo-main {
+    width: 100% !important;
+    justify-content: center;
+    white-space: normal;
+    text-align: center;
+    padding: 12px 18px;
+    font-size: 0.78rem;
   }
 
   .tribute-search-input {
     font-size: 16px !important; /* Prevents iOS Safari auto-zoom */
     padding: 10px 16px 10px 38px;
     min-height: 44px;
+    width: 100%;
+    box-sizing: border-box;
   }
 
   .tributes-grid {
