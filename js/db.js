@@ -109,7 +109,7 @@ const INITIAL_PHOTOS = [
     url: 'assets/photos/benson-ajayi-portrait2.jpg',
     thumbUrl: 'assets/photos/thumb_benson-ajayi-portrait2.jpg',
     caption: 'Honoring a patriarch on his 60th milestone',
-    author: 'Children & Grandchildren',
+    author: 'The Ajayi Family',
     category: 'jubilee',
     date: 'October 2026'
   }

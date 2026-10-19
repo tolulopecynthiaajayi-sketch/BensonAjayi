@@ -161,7 +161,7 @@ document.addEventListener('DOMContentLoaded', () => {
       // Filter by category
       if (activeFilter === 'family') {
         const rel = (t.relation || '').toLowerCase();
-        if (!['son', 'daughter', 'wife', 'grandchildren', 'grandchild', 'brother', 'sister', 'in-law'].some(r => rel.includes(r))) {
+        if (!['family', 'son', 'daughter', 'child', 'wife', 'brother', 'sister', 'in-law', 'relative', 'cousin', 'nephew', 'niece'].some(r => rel.includes(r))) {
           return false;
         }
       } else if (activeFilter === 'friends') {
