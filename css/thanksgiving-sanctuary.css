@@ -310,12 +310,76 @@
   margin-top: 24px;
 }
 
-/* Responsive adjustments */
+/* Responsive adjustments for mobile devices */
 @media (max-width: 768px) {
   .thanksgiving-sanctuary-section {
-    padding: 36px 20px;
+    padding: 28px 16px;
+    margin-bottom: 36px;
+    border-radius: var(--radius-md);
   }
+
+  .sanctuary-header {
+    margin-bottom: 24px;
+  }
+
+  .sanctuary-pretitle {
+    font-size: 0.72rem;
+    letter-spacing: 1.8px;
+  }
+
+  .sanctuary-title {
+    font-size: clamp(1.6rem, 6.5vw, 2.2rem);
+    margin-bottom: 12px;
+  }
+
+  .sanctuary-desc {
+    font-size: 0.94rem;
+    line-height: 1.65;
+  }
+
+  .sanctuary-filter-bar {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    justify-content: flex-start;
+    padding-bottom: 4px;
+    gap: 8px;
+    width: 100%;
+  }
+
+  .sanctuary-filter-bar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .sanctuary-filter-btn {
+    flex-shrink: 0;
+    padding: 7px 14px;
+    font-size: 0.80rem;
+    white-space: nowrap;
+  }
+
   .sanctuary-offerings-grid {
     grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .sanctuary-card {
+    padding: 20px 16px;
+  }
+
+  .scripture-verse-text {
+    font-size: 1.05rem;
+    line-height: 1.65;
+  }
+
+  .sanctuary-actions {
+    width: 100%;
+  }
+
+  .sanctuary-actions button {
+    width: 100%;
   }
 }
+

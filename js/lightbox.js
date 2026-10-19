@@ -83,7 +83,35 @@ class GalleryLightbox {
       if (e.key === 'ArrowLeft') this.prev();
       if (e.key === 'ArrowRight') this.next();
     });
+
+    // Mobile Touch Swipe Gesture Support
+    let touchStartX = 0;
+    let touchStartY = 0;
+
+    if (this.modal) {
+      this.modal.addEventListener('touchstart', (e) => {
+        if (!e.touches || e.touches.length === 0) return;
+        touchStartX = e.touches[0].clientX;
+        touchStartY = e.touches[0].clientY;
+      }, { passive: true });
+
+      this.modal.addEventListener('touchend', (e) => {
+        if (!e.changedTouches || e.changedTouches.length === 0) return;
+        const deltaX = e.changedTouches[0].clientX - touchStartX;
+        const deltaY = e.changedTouches[0].clientY - touchStartY;
+
+        // Ensure horizontal swipe is dominant and above threshold (40px)
+        if (Math.abs(deltaX) > 40 && Math.abs(deltaX) > Math.abs(deltaY) * 1.5) {
+          if (deltaX < 0) {
+            this.next(); // Swiped left -> Next
+          } else {
+            this.prev(); // Swiped right -> Previous
+          }
+        }
+      }, { passive: true });
+    }
   }
+
 }
 
 window.GalleryLightbox = GalleryLightbox;
