@@ -822,4 +822,14 @@ document.addEventListener('DOMContentLoaded', () => {
   renderTributes();
   renderBlessings();
   renderGallery();
+
+  // Real-time Cloud Synchronization Listener (Firebase Cloud Firestore)
+  if (window.db && typeof window.db.on === 'function') {
+    window.db.on('change', () => {
+      updateStats();
+      renderTributes();
+      renderBlessings();
+      renderGallery();
+    });
+  }
 });

@@ -1,0 +1,129 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // ===============================================================
+    // Assumed Data Model
+    // ===============================================================
+    //
+    // Collection: tributes
+    // Document ID: auto-generated
+    // Fields:
+    //   - author: string (required, 1-100 chars)
+    //   - relation: string (optional, 0-100 chars)
+    //   - avatarInitials: string (optional, 1-4 chars)
+    //   - symbol: string (optional, 1-20 chars)
+    //   - message: string (required, 1-3000 chars)
+    //   - likes: number (required, >= 0)
+    //   - photoUrl: string (optional, <= 1000000 chars)
+    //   - createdAt: timestamp (required)
+    //   - date: string (optional, <= 50 chars)
+    //
+    // Collection: blessings
+    // Document ID: auto-generated
+    // Fields:
+    //   - type: string (required, 'scripture' or 'toast')
+    //   - author: string (required, 1-100 chars)
+    //   - relation: string (optional, 0-100 chars)
+    //   - reference: string (optional, 0-200 chars)
+    //   - verse: string (optional, 0-2000 chars)
+    //   - toast: string (optional, 0-2000 chars)
+    //   - prayer: string (optional, 0-2000 chars)
+    //   - amenCount: number (required, >= 0)
+    //   - createdAt: timestamp (required)
+    //   - date: string (optional, <= 50 chars)
+    //
+    // Collection: photos
+    // Document ID: auto-generated
+    // Fields:
+    //   - url: string (required, <= 1000000 chars)
+    //   - caption: string (optional, 0-500 chars)
+    //   - author: string (optional, 0-100 chars)
+    //   - category: string (optional, 1-50 chars)
+    //   - date: string (optional, <= 50 chars)
+    //   - createdAt: timestamp (required)
+    // ===============================================================
+
+    function hasOnlyAllowedFields(fields) {
+      return request.resource.data.keys().hasOnly(fields);
+    }
+
+    function validString(field, minLen, maxLen) {
+      return request.resource.data[field] is string &&
+             request.resource.data[field].size() >= minLen &&
+             request.resource.data[field].size() <= maxLen;
+    }
+
+    function validOptionalString(field, maxLen) {
+      return !(field in request.resource.data) ||
+             request.resource.data[field] == null ||
+             (request.resource.data[field] is string && request.resource.data[field].size() <= maxLen);
+    }
+
+    // 1. Tributes Collection
+    match /tributes/{tributeId} {
+      allow read: if true;
+
+      allow create: if hasOnlyAllowedFields(['author', 'relation', 'avatarInitials', 'symbol', 'message', 'likes', 'photoUrl', 'createdAt', 'date'])
+        && validString('author', 1, 100)
+        && validString('message', 1, 3000)
+        && validOptionalString('relation', 100)
+        && validOptionalString('avatarInitials', 4)
+        && validOptionalString('symbol', 20)
+        && validOptionalString('photoUrl', 1000000)
+        && validOptionalString('date', 50)
+        && request.resource.data.likes is number
+        && request.resource.data.likes >= 0
+        && request.resource.data.createdAt is timestamp;
+
+      // Allow likes increment
+      allow update: if request.resource.data.diff(resource.data).affectedKeys().hasOnly(['likes'])
+        && request.resource.data.likes is number
+        && request.resource.data.likes >= 0;
+
+      allow delete: if false;
+    }
+
+    // 2. Blessings & Toasts Collection
+    match /blessings/{blessingId} {
+      allow read: if true;
+
+      allow create: if hasOnlyAllowedFields(['type', 'author', 'relation', 'reference', 'verse', 'toast', 'prayer', 'amenCount', 'createdAt', 'date'])
+        && request.resource.data.type in ['scripture', 'toast']
+        && validString('author', 1, 100)
+        && validOptionalString('relation', 100)
+        && validOptionalString('reference', 200)
+        && validOptionalString('verse', 2000)
+        && validOptionalString('toast', 2000)
+        && validOptionalString('prayer', 2000)
+        && validOptionalString('date', 50)
+        && request.resource.data.amenCount is number
+        && request.resource.data.amenCount >= 0
+        && request.resource.data.createdAt is timestamp;
+
+      // Allow amenCount increment
+      allow update: if request.resource.data.diff(resource.data).affectedKeys().hasOnly(['amenCount'])
+        && request.resource.data.amenCount is number
+        && request.resource.data.amenCount >= 0;
+
+      allow delete: if false;
+    }
+
+    // 3. Photos Collection
+    match /photos/{photoId} {
+      allow read: if true;
+
+      allow create: if hasOnlyAllowedFields(['url', 'thumbUrl', 'caption', 'author', 'category', 'date', 'createdAt'])
+        && validString('url', 1, 1000000)
+        && validOptionalString('thumbUrl', 1000000)
+        && validOptionalString('caption', 500)
+        && validOptionalString('author', 100)
+        && validOptionalString('category', 50)
+        && validOptionalString('date', 50)
+        && request.resource.data.createdAt is timestamp;
+
+      allow update: if false;
+      allow delete: if false;
+    }
+  }
+}

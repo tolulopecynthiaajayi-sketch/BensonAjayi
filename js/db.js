@@ -1,14 +1,24 @@
 /* ===================================================================
-   DATABASE & PERSISTENCE MANAGER (db.js)
-   Stores Tributes, Photos, Candles & Likes in LocalStorage & IndexedDB
-   Preloaded with authentic family initial tributes & curated photos
+   DATABASE & REAL-TIME CLOUD PERSISTENCE MANAGER (db.js)
+   Powered by Google Cloud Firestore & LocalStorage Cache
+   Synchronizes Tributes, Blessings & Photos across all visitors in real time!
    =================================================================== */
 
 const DB_KEYS = {
-  TRIBUTES: 'benson_60th_tributes_v4',
-  PHOTOS: 'benson_60th_photos_v5',
-  BLESSINGS: 'benson_60th_blessings_v5',
-  LIKES: 'benson_60th_likes_v4'
+  TRIBUTES: 'benson_60th_tributes_v6',
+  PHOTOS: 'benson_60th_photos_v6',
+  BLESSINGS: 'benson_60th_blessings_v6',
+  LIKES: 'benson_60th_likes_v6'
+};
+
+// Official Firebase Config for BensonAjayi-Web
+const firebaseConfig = {
+  projectId: "bensonajayi-c8295",
+  appId: "1:340504259298:web:05d8774fd0300718fcccbb",
+  storageBucket: "bensonajayi-c8295.firebasestorage.app",
+  apiKey: "AIzaSyAMpZlKBrRmsplnroyD4WYjAcjpXWSW9yk",
+  authDomain: "bensonajayi-c8295.firebaseapp.com",
+  messagingSenderId: "340504259298"
 };
 
 // Initial Seed Photos (from curated assets)
@@ -241,27 +251,218 @@ const INITIAL_BLESSINGS = [
 
 class TributeDB {
   constructor() {
+    this.listeners = [];
+    this.firestoreDb = null;
+    this.isCloudConnected = false;
     this.init();
   }
 
+  // Event subscription for real-time reactivity
+  on(event, callback) {
+    this.listeners.push({ event, callback });
+  }
+
+  emit(event, data) {
+    this.listeners.filter(l => l.event === event).forEach(l => {
+      try { l.callback(data); } catch (e) { console.error('Listener error:', e); }
+    });
+  }
+
   init() {
+    // 1. Ensure LocalStorage fallback has baseline data
     if (!localStorage.getItem(DB_KEYS.TRIBUTES)) {
       localStorage.setItem(DB_KEYS.TRIBUTES, JSON.stringify(INITIAL_TRIBUTES));
     }
-    const storedPhotos = localStorage.getItem(DB_KEYS.PHOTOS);
-    if (!storedPhotos || !storedPhotos.includes('thumbUrl')) {
+    if (!localStorage.getItem(DB_KEYS.PHOTOS)) {
       localStorage.setItem(DB_KEYS.PHOTOS, JSON.stringify(INITIAL_PHOTOS));
     }
-    // Migrate or initialize blessings
     if (!localStorage.getItem(DB_KEYS.BLESSINGS)) {
       localStorage.setItem(DB_KEYS.BLESSINGS, JSON.stringify(INITIAL_BLESSINGS));
     }
     if (!localStorage.getItem(DB_KEYS.LIKES)) {
       localStorage.setItem(DB_KEYS.LIKES, JSON.stringify({}));
     }
+
+    // 2. Initialize Firebase Cloud Firestore
+    this.initFirebase();
   }
 
-  // Tributes
+  initFirebase() {
+    if (typeof firebase === 'undefined') {
+      console.warn('Firebase SDK not loaded, running in offline LocalStorage mode.');
+      return;
+    }
+
+    try {
+      if (!firebase.apps.length) {
+        firebase.initializeApp(firebaseConfig);
+      }
+      this.firestoreDb = firebase.firestore();
+      this.isCloudConnected = true;
+      console.log('✦ Firebase Firestore Connected for Benson Ajayi Diamond Jubilee!');
+
+      // Set up Real-Time Listeners
+      this.listenToTributes();
+      this.listenToBlessings();
+      this.listenToPhotos();
+    } catch (err) {
+      console.warn('Firebase connection error, falling back to local mode:', err);
+    }
+  }
+
+  // -------------------------------------------------------------
+  // REAL-TIME FIRESTORE LISTENERS
+  // -------------------------------------------------------------
+  listenToTributes() {
+    if (!this.firestoreDb) return;
+
+    this.firestoreDb.collection('tributes').orderBy('createdAt', 'desc')
+      .onSnapshot(snapshot => {
+        if (snapshot.empty) {
+          // First time initialization: seed initial tributes into the cloud
+          this.seedInitialTributes();
+          return;
+        }
+
+        const cloudTributes = [];
+        snapshot.forEach(doc => {
+          cloudTributes.push({
+            id: doc.id,
+            ...doc.data()
+          });
+        });
+
+        localStorage.setItem(DB_KEYS.TRIBUTES, JSON.stringify(cloudTributes));
+        this.emit('change', { type: 'tributes', data: cloudTributes });
+      }, err => {
+        console.warn('Tributes live sync fallback:', err);
+      });
+  }
+
+  listenToBlessings() {
+    if (!this.firestoreDb) return;
+
+    this.firestoreDb.collection('blessings').orderBy('createdAt', 'desc')
+      .onSnapshot(snapshot => {
+        if (snapshot.empty) {
+          this.seedInitialBlessings();
+          return;
+        }
+
+        const cloudBlessings = [];
+        snapshot.forEach(doc => {
+          cloudBlessings.push({
+            id: doc.id,
+            ...doc.data()
+          });
+        });
+
+        localStorage.setItem(DB_KEYS.BLESSINGS, JSON.stringify(cloudBlessings));
+        this.emit('change', { type: 'blessings', data: cloudBlessings });
+      }, err => {
+        console.warn('Blessings live sync fallback:', err);
+      });
+  }
+
+  listenToPhotos() {
+    if (!this.firestoreDb) return;
+
+    this.firestoreDb.collection('photos').orderBy('createdAt', 'desc')
+      .onSnapshot(snapshot => {
+        if (snapshot.empty) {
+          this.seedInitialPhotos();
+          return;
+        }
+
+        const cloudPhotos = [];
+        snapshot.forEach(doc => {
+          cloudPhotos.push({
+            id: doc.id,
+            ...doc.data()
+          });
+        });
+
+        // Merge with baseline initial photos so retrospective portraits are always present
+        const combined = [...cloudPhotos];
+        INITIAL_PHOTOS.forEach(p => {
+          if (!combined.some(c => c.id === p.id || c.url === p.url)) {
+            combined.push(p);
+          }
+        });
+
+        localStorage.setItem(DB_KEYS.PHOTOS, JSON.stringify(combined));
+        this.emit('change', { type: 'photos', data: combined });
+      }, err => {
+        console.warn('Photos live sync fallback:', err);
+      });
+  }
+
+  // Seed functions if database is brand new
+  async seedInitialTributes() {
+    if (!this.firestoreDb) return;
+    try {
+      for (const t of [...INITIAL_TRIBUTES].reverse()) {
+        await this.firestoreDb.collection('tributes').doc(t.id).set({
+          author: t.author,
+          relation: t.relation,
+          avatarInitials: t.avatarInitials,
+          symbol: t.symbol,
+          message: t.message,
+          likes: t.likes || 0,
+          photoUrl: t.photoUrl || null,
+          date: t.date,
+          createdAt: firebase.firestore.FieldValue.serverTimestamp()
+        });
+      }
+    } catch (e) {
+      console.warn('Error seeding tributes to Firestore:', e);
+    }
+  }
+
+  async seedInitialBlessings() {
+    if (!this.firestoreDb) return;
+    try {
+      for (const b of [...INITIAL_BLESSINGS].reverse()) {
+        await this.firestoreDb.collection('blessings').doc(b.id).set({
+          type: b.type,
+          author: b.author,
+          relation: b.relation,
+          reference: b.reference || '',
+          verse: b.verse || '',
+          toast: b.toast || '',
+          prayer: b.prayer || '',
+          amenCount: b.amenCount || 1,
+          date: b.date,
+          createdAt: firebase.firestore.FieldValue.serverTimestamp()
+        });
+      }
+    } catch (e) {
+      console.warn('Error seeding blessings to Firestore:', e);
+    }
+  }
+
+  async seedInitialPhotos() {
+    if (!this.firestoreDb) return;
+    try {
+      for (const p of INITIAL_PHOTOS) {
+        await this.firestoreDb.collection('photos').doc(p.id).set({
+          url: p.url,
+          thumbUrl: p.thumbUrl || p.url,
+          caption: p.caption || '',
+          author: p.author || 'Family',
+          category: p.category || 'jubilee',
+          date: p.date || 'October 2026',
+          createdAt: firebase.firestore.FieldValue.serverTimestamp()
+        });
+      }
+    } catch (e) {
+      console.warn('Error seeding photos to Firestore:', e);
+    }
+  }
+
+  // -------------------------------------------------------------
+  // TRIBUTES CRUD
+  // -------------------------------------------------------------
   getTributes() {
     try {
       return JSON.parse(localStorage.getItem(DB_KEYS.TRIBUTES)) || INITIAL_TRIBUTES;
@@ -270,16 +471,50 @@ class TributeDB {
     }
   }
 
-  addTribute(tribute) {
+  async addTribute(tribute) {
     const list = this.getTributes();
+    const tempId = 'trib-' + Date.now();
+    const dateFormatted = new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+
     const newTribute = {
-      id: 'trib-' + Date.now(),
+      id: tempId,
+      author: String(tribute.author || 'Well-wisher').trim().substring(0, 100),
+      relation: String(tribute.relation || 'Family & Friend').trim().substring(0, 100),
+      avatarInitials: String(tribute.avatarInitials || (tribute.author ? tribute.author.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase() : 'BA')).substring(0, 4),
+      symbol: String(tribute.symbol || '✦').substring(0, 20),
+      message: String(tribute.message || '').trim().substring(0, 3000),
       likes: 0,
-      date: new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }),
-      ...tribute
+      photoUrl: tribute.photoUrl ? String(tribute.photoUrl) : null,
+      date: dateFormatted
     };
+
+    // Optimistic local update
     list.unshift(newTribute);
     localStorage.setItem(DB_KEYS.TRIBUTES, JSON.stringify(list));
+    this.emit('change', { type: 'tributes', data: list });
+
+    // Sync to Cloud Firestore
+    if (this.firestoreDb && typeof firebase !== 'undefined') {
+        const payload = {
+          author: newTribute.author,
+          relation: newTribute.relation || '',
+          avatarInitials: newTribute.avatarInitials || 'BA',
+          symbol: newTribute.symbol || '✦',
+          message: newTribute.message,
+          likes: 0,
+          date: newTribute.date,
+          createdAt: firebase.firestore.FieldValue.serverTimestamp()
+        };
+        if (newTribute.photoUrl) {
+          payload.photoUrl = newTribute.photoUrl;
+        }
+        const docRef = await this.firestoreDb.collection('tributes').add(payload);
+        newTribute.id = docRef.id;
+      } catch (err) {
+        console.warn('Error saving tribute to Cloud Firestore, saved locally:', err);
+      }
+    }
+
     return newTribute;
   }
 
@@ -290,16 +525,31 @@ class TributeDB {
     if (!target) return { liked: false, count: 0 };
 
     const alreadyLiked = !!likesMap[tributeId];
+    const delta = alreadyLiked ? -1 : 1;
+
+    target.likes = Math.max(0, (target.likes || 0) + delta);
     if (alreadyLiked) {
-      target.likes = Math.max(0, (target.likes || 1) - 1);
       delete likesMap[tributeId];
     } else {
-      target.likes = (target.likes || 0) + 1;
       likesMap[tributeId] = true;
     }
 
     localStorage.setItem(DB_KEYS.TRIBUTES, JSON.stringify(tributes));
     localStorage.setItem(DB_KEYS.LIKES, JSON.stringify(likesMap));
+
+    // Cloud increment/decrement
+    if (this.firestoreDb && typeof firebase !== 'undefined') {
+      try {
+        this.firestoreDb.collection('tributes').doc(tributeId).update({
+          likes: firebase.firestore.FieldValue.increment(delta)
+        }).catch(() => {
+          // If document was a local tempId, it will sync when re-fetched
+        });
+      } catch (err) {
+        console.warn('Like update error:', err);
+      }
+    }
+
     return { liked: !alreadyLiked, count: target.likes };
   }
 
@@ -308,7 +558,9 @@ class TributeDB {
     return !!likesMap[tributeId];
   }
 
-  // Photos
+  // -------------------------------------------------------------
+  // PHOTOS CRUD
+  // -------------------------------------------------------------
   getPhotos() {
     try {
       const stored = JSON.parse(localStorage.getItem(DB_KEYS.PHOTOS));
@@ -327,20 +579,49 @@ class TributeDB {
     }
   }
 
-  addPhoto(photo) {
+  async addPhoto(photo) {
     const list = this.getPhotos();
+    const tempId = 'photo-' + Date.now();
+    const dateFormatted = new Date().toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
+
     const newPhoto = {
-      id: 'photo-' + Date.now(),
-      date: new Date().toLocaleDateString('en-US', { month: 'short', year: 'numeric' }),
-      category: 'guest',
-      ...photo
+      id: tempId,
+      url: photo.url,
+      thumbUrl: photo.thumbUrl || photo.url,
+      caption: String(photo.caption || 'Cherished moment').trim().substring(0, 500),
+      author: String(photo.author || 'Family & Friend').trim().substring(0, 100),
+      category: photo.category || 'guest',
+      date: dateFormatted
     };
+
     list.unshift(newPhoto);
     localStorage.setItem(DB_KEYS.PHOTOS, JSON.stringify(list));
+    this.emit('change', { type: 'photos', data: list });
+
+    if (this.firestoreDb && typeof firebase !== 'undefined') {
+      try {
+        const payload = {
+          url: newPhoto.url,
+          thumbUrl: newPhoto.thumbUrl,
+          caption: newPhoto.caption,
+          author: newPhoto.author,
+          category: newPhoto.category,
+          date: newPhoto.date,
+          createdAt: firebase.firestore.FieldValue.serverTimestamp()
+        };
+        const docRef = await this.firestoreDb.collection('photos').add(payload);
+        newPhoto.id = docRef.id;
+      } catch (err) {
+        console.warn('Error saving photo to Cloud Firestore, saved locally:', err);
+      }
+    }
+
     return newPhoto;
   }
 
-  // Blessings (Scriptures, Toasts, 60 Stickers)
+  // -------------------------------------------------------------
+  // BLESSINGS & TOASTS CRUD
+  // -------------------------------------------------------------
   getBlessings() {
     try {
       const stored = JSON.parse(localStorage.getItem(DB_KEYS.BLESSINGS));
@@ -353,16 +634,48 @@ class TributeDB {
     }
   }
 
-  addBlessing(blessing) {
+  async addBlessing(blessing) {
     const list = this.getBlessings();
+    const tempId = 'bless-' + Date.now();
+
     const newBlessing = {
-      id: 'bless-' + Date.now(),
+      id: tempId,
+      type: blessing.type || 'scripture',
+      author: String(blessing.author || 'Church Family').trim().substring(0, 100),
+      relation: String(blessing.relation || 'Family & Well-wisher').trim().substring(0, 100),
+      reference: blessing.reference ? String(blessing.reference).trim().substring(0, 200) : '',
+      verse: blessing.verse ? String(blessing.verse).trim().substring(0, 2000) : '',
+      toast: blessing.toast ? String(blessing.toast).trim().substring(0, 2000) : '',
+      prayer: blessing.prayer ? String(blessing.prayer).trim().substring(0, 2000) : '',
       amenCount: 1,
-      date: 'Just now',
-      ...blessing
+      date: 'Just now'
     };
+
     list.unshift(newBlessing);
     localStorage.setItem(DB_KEYS.BLESSINGS, JSON.stringify(list));
+    this.emit('change', { type: 'blessings', data: list });
+
+    if (this.firestoreDb && typeof firebase !== 'undefined') {
+      try {
+        const payload = {
+          type: newBlessing.type,
+          author: newBlessing.author,
+          relation: newBlessing.relation,
+          reference: newBlessing.reference,
+          verse: newBlessing.verse,
+          toast: newBlessing.toast,
+          prayer: newBlessing.prayer,
+          amenCount: 1,
+          date: 'October 2026',
+          createdAt: firebase.firestore.FieldValue.serverTimestamp()
+        };
+        const docRef = await this.firestoreDb.collection('blessings').add(payload);
+        newBlessing.id = docRef.id;
+      } catch (err) {
+        console.warn('Error saving blessing to Cloud Firestore, saved locally:', err);
+      }
+    }
+
     return newBlessing;
   }
 
@@ -374,16 +687,28 @@ class TributeDB {
 
     const key = 'amen_' + blessingId;
     const alreadyClicked = !!likesMap[key];
+    const delta = alreadyClicked ? -1 : 1;
+
+    target.amenCount = Math.max(0, (target.amenCount || 0) + delta);
     if (alreadyClicked) {
-      target.amenCount = Math.max(0, (target.amenCount || 1) - 1);
       delete likesMap[key];
     } else {
-      target.amenCount = (target.amenCount || 0) + 1;
       likesMap[key] = true;
     }
 
     localStorage.setItem(DB_KEYS.BLESSINGS, JSON.stringify(blessings));
     localStorage.setItem(DB_KEYS.LIKES, JSON.stringify(likesMap));
+
+    if (this.firestoreDb && typeof firebase !== 'undefined') {
+      try {
+        this.firestoreDb.collection('blessings').doc(blessingId).update({
+          amenCount: firebase.firestore.FieldValue.increment(delta)
+        }).catch(() => {});
+      } catch (err) {
+        console.warn('Amen update error:', err);
+      }
+    }
+
     return { active: !alreadyClicked, count: target.amenCount };
   }
 
@@ -419,19 +744,6 @@ class TributeDB {
       blessings: this.getBlessings(),
       exportedAt: new Date().toISOString()
     }, null, 2);
-  }
-
-  importData(jsonString) {
-    try {
-      const data = JSON.parse(jsonString);
-      if (data.tributes) localStorage.setItem(DB_KEYS.TRIBUTES, JSON.stringify(data.tributes));
-      if (data.photos) localStorage.setItem(DB_KEYS.PHOTOS, JSON.stringify(data.photos));
-      if (data.blessings) localStorage.setItem(DB_KEYS.BLESSINGS, JSON.stringify(data.blessings));
-      return true;
-    } catch (e) {
-      console.error('Import failed', e);
-      return false;
-    }
   }
 }
 
