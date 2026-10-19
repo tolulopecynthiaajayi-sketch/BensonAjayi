@@ -3,10 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
-  <title>Benson Ajayi — Diamond Jubilee Retrospective & 60th Celebration (1966 – 2026)</title>
+  <title>Benson Ajayi — The 60th Diamond Jubilee Celebration</title>
   
+  <script>
+    // Prevent browser from restoring scroll position down the page on reload/refresh
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+    window.scrollTo(0, 0);
+  </script>
+
   <!-- SEO & Social Sharing Metadata -->
-  <meta name="description" content="A digital celebration of 60 glorious years of Benson Ajayi (1966 – 2026). Leave heartfelt tributes, dedicate scriptures, raise toasts, and share cherished photo memories.">
+  <meta name="description" content="A digital celebration of 60 glorious years of Benson Ajayi. Leave heartfelt tributes, dedicate scriptures, raise toasts, and share cherished photo memories.">
   <meta property="og:title" content="Benson Ajayi — 60th Diamond Jubilee Celebration & Tributes">
   <meta property="og:description" content="Inscribe your prayers, memories, and blessings to celebrate Daddy Benson Ajayi's 60th Birthday!">
   <meta property="og:image" content="assets/photos/benson-ajayi-avatar.jpg">
@@ -21,9 +29,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@500;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   
   <!-- Stylesheets -->
-  <link rel="stylesheet" href="css/main.css?v=72">
-  <link rel="stylesheet" href="css/tribute-gallery.css?v=72">
-  <link rel="stylesheet" href="css/thanksgiving-sanctuary.css?v=72">
+  <link rel="stylesheet" href="css/main.css?v=76">
+  <link rel="stylesheet" href="css/tribute-gallery.css?v=76">
+  <link rel="stylesheet" href="css/thanksgiving-sanctuary.css?v=76">
 </head>
 <body>
 
@@ -46,7 +54,7 @@
     <!-- Central Monumental 60 & Enter Trigger -->
     <div class="portal-centerpiece-stage">
       <div class="portal-massive-aura" aria-hidden="true"></div>
-      <div class="portal-eyebrow-tag">Diamond Jubilee Celebration • 1966 – 2026</div>
+      <div class="portal-eyebrow-tag">Diamond Jubilee Celebration • 60 Glorious Years</div>
       <div class="portal-massive-60">60<span class="portal-massive-th">th</span></div>
       <button class="portal-enter-button" id="portal-open-btn" onclick="openPortalDoors(event)" aria-label="Open doors and enter celebration experience">
         <span class="button-label">Enter Experience</span>
@@ -71,7 +79,7 @@
           <div class="masthead-seal">BA</div>
           <div class="masthead-title-wrap">
             <span class="masthead-title">Benson Ajayi</span>
-            <span class="masthead-edition">60th Diamond Jubilee • 1966 – 2026</span>
+            <span class="masthead-edition">60th Diamond Jubilee Celebration</span>
           </div>
         </a>
 
@@ -173,7 +181,7 @@
             <span class="foreword-drop-cap">O</span>ver the span of six remarkable decades, Benson Ajayi has stood as a beacon of integrity, spiritual grounding, and unconditional paternal devotion. To know him is to experience a gentle warmth that puts everyone at ease, a quiet wisdom that guides without imposing, and a heart that perpetually puts family and faith above all else.
           </p>
           <p class="foreword-body-text">
-            From humble beginnings in 1966 to reaching this magnificent Diamond Jubilee in 2026, his life exemplifies the beauty of a path walked in divine favor. As his children, family, and lifelong companions, we gather these pages as a living monument of honour, thanksgiving, and boundless love.
+            From humble beginnings to reaching this magnificent Diamond Jubilee at 60, his life exemplifies the beauty of a path walked in divine favor. As his children, family, and lifelong companions, we gather these pages as a living monument of honour, thanksgiving, and boundless love.
           </p>
           <div class="foreword-signature-box">
             <div class="foreword-signature">The Ajayi Family</div>
@@ -425,7 +433,7 @@
         </p>
         <div class="narrative-citation">
           <span class="citation-author">Daddy Benson Ajayi</span>
-          <span class="citation-date">1966 – 2026</span>
+          <span class="citation-date">60th Diamond Jubilee</span>
         </div>
       </div>
     </div>
@@ -440,7 +448,7 @@
         <img src="assets/photos/benson-ajayi-avatar.jpg?v=6" alt="Benson Ajayi">
       </div>
       <h4 class="colophon-title">Benson Ajayi</h4>
-      <p class="colophon-text">The 60th Diamond Jubilee Celebration (1966 – 2026)</p>
+      <p class="colophon-text">The 60th Diamond Jubilee Celebration</p>
       <div class="editorial-divider" style="margin-bottom: 20px;">
         <span class="editorial-divider-line"></span>
         <span class="editorial-divider-icon">✦</span>
@@ -796,6 +804,14 @@
       if (e) e.stopPropagation();
       const portal = document.getElementById('jubilee-portal');
       if (!portal || portal.classList.contains('doors-open')) return;
+
+      // Always reset viewport to top hero portrait when entering celebration
+      try {
+        window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+        document.documentElement.scrollTop = 0;
+        document.body.scrollTop = 0;
+      } catch (err) {}
+
       portal.classList.add('doors-open');
 
       // 1. Play realistic antique wooden door creak, transitioning to King Sunny Ade celebration song
@@ -820,11 +836,11 @@
   <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
 
-  <script src="js/db.js?v=75"></script>
-  <script src="js/confetti.js?v=75"></script>
-  <script src="js/audio.js?v=75"></script>
-  <script src="js/lightbox.js?v=75"></script>
-  <script src="js/app.js?v=75"></script>
+  <script src="js/db.js?v=76"></script>
+  <script src="js/confetti.js?v=76"></script>
+  <script src="js/audio.js?v=76"></script>
+  <script src="js/lightbox.js?v=76"></script>
+  <script src="js/app.js?v=76"></script>
 
 </body>
 </html>

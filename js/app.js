@@ -1,10 +1,16 @@
 /* ===================================================================
    MAIN APPLICATION SCRIPT (app.js)
    Interactivity, Form Handling, Real-time Rendering & Event Handlers
-   Diamond Jubilee Celebration for Daddy Benson Ajayi (1966 – 2026)
+   Diamond Jubilee Celebration for Daddy Benson Ajayi (60 Glorious Years)
    =================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
+  // Prevent browser from restoring scroll position down the page on reload/refresh
+  if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual';
+  }
+  window.scrollTo(0, 0);
+
   // Initialize helpers
   const confetti = new window.CelebrationConfetti();
   const audioPlayer = new window.AmbientPlayer();
@@ -83,6 +89,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function openPortalDoors() {
     if (!jubileePortal || jubileePortal.classList.contains('doors-open')) return;
+
+    // Reset scroll to top (Hero portrait) so doors open directly onto the hero picture
+    try {
+      window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+    } catch (err) {}
+
     jubileePortal.classList.add('doors-open');
 
     // Play antique wooden door creak, transitioning to King Sunny Ade celebration song
@@ -403,7 +417,7 @@ document.addEventListener('DOMContentLoaded', () => {
     heroPortalTrigger.addEventListener('click', () => {
       lightbox.setPhotos([{
         url: 'assets/photos/hero-wide-benson.jpg',
-        caption: 'Daddy Benson Ajayi — Diamond Jubilee Portrait (1966 – 2026)',
+        caption: 'Daddy Benson Ajayi — Diamond Jubilee Portrait',
         author: 'Diamond Jubilee Archive',
         date: 'October 2026'
       }]);
@@ -766,7 +780,7 @@ document.addEventListener('DOMContentLoaded', () => {
     shareWhatsAppBtn.addEventListener('click', () => {
       const pageUrl = window.location.href;
       const text = encodeURIComponent(
-        `Celebrating 60 Glorious Years of Daddy Benson Ajayi (1966 – 2026)\n\n` +
+        `Celebrating 60 Glorious Years of Daddy Benson Ajayi — Diamond Jubilee Celebration\n\n` +
         `Join us in celebrating his Diamond Jubilee: read his biography, inscribe your heartfelt letters, dedicate scriptures, and share photos:\n${pageUrl}\n\n` +
         `Please share with extended family and friends!`
       );
