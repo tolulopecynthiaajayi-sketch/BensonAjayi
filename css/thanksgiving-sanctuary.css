@@ -121,12 +121,25 @@
   box-shadow: 0 4px 14px rgba(229, 192, 123, 0.35);
 }
 
-/* Grid of Thanksgiving Offerings */
+/* Grid of Thanksgiving Offerings - Dynamic Content Masonry */
 .sanctuary-offerings-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 24px;
+  column-count: 3;
+  column-gap: 24px;
   margin-bottom: 36px;
+}
+
+@media (max-width: 1100px) {
+  .sanctuary-offerings-grid {
+    column-count: 2;
+    column-gap: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .sanctuary-offerings-grid {
+    column-count: 1;
+    column-gap: 0;
+  }
 }
 
 /* Base Offering Card - Soft Translucent Faded Glass */
@@ -140,10 +153,16 @@
   padding: 24px 22px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
   box-shadow: 0 8px 25px rgba(10, 3, 5, 0.45), 0 0 15px rgba(77, 18, 32, 0.15);
   transition: all var(--transition-smooth);
   overflow: hidden;
+  break-inside: avoid;
+  page-break-inside: avoid;
+  -webkit-column-break-inside: avoid;
+  margin-bottom: 24px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .offering-card::before {
@@ -260,7 +279,7 @@
   align-items: center;
   padding-top: 14px;
   border-top: 1px solid var(--hairline-light);
-  margin-top: 12px;
+  margin-top: 16px;
 }
 
 .offering-author {
@@ -361,12 +380,14 @@
   }
 
   .sanctuary-offerings-grid {
-    grid-template-columns: 1fr;
-    gap: 16px;
+    column-count: 1;
+    column-gap: 0;
   }
 
+  .offering-card,
   .sanctuary-card {
     padding: 20px 16px;
+    margin-bottom: 16px;
   }
 
   .scripture-verse-text {
