@@ -10,7 +10,7 @@ A commemorative digital retrospective and celebration monograph honoring **Elder
 - **Chapter II: Letters of Honour & Gratitude**: An interactive guestbook and tribute board with commemorative seals, likes, photo attachments, and category filters.
 - **Chapter III: Sanctuary of Praise & Thanksgiving**: Scripture blessings and celebratory diamond jubilee toasts dedicated to Almighty God.
 - **Chapter IV: The Visual Archive**: Curated retrospective photo exhibition with full-screen editorial lightbox viewer.
-- **Chapter V: Destiny & Chronicle**: Life narrative and educational milestones (Bishop Philips, St. Ambrose, St. Joseph, FedPoly Ado-Ekiti, OAU) and corporate leadership career (Michael Stevens, UAC, NCR, ARM, LCC, Mixta Africa).
+- **Chapter V: Destiny & Chronicle**: Life narrative, educational milestones (Bishop Philips, St. Ambrose, St. Joseph, FedPoly Ado-Ekiti, Master's at University of Ife / OAU), and corporate leadership career (Michael Stevens, UAC, NCR, ARM, LCC, Mixta Africa).
 
 ---
 
